@@ -6,13 +6,13 @@
 //  Copyright (c) 2014 Secret Lab. All rights reserved.
 //
 
-#import "DYViewController.h"
+#import "DYNoteViewController.h"
 
-@interface DYViewController ()
+@interface DYNoteViewController ()
 
 @end
 
-@implementation DYViewController
+@implementation DYNoteViewController
 
 - (void)viewDidLoad
 {

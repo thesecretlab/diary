@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DYViewController : UIViewController
+@interface DYNoteViewController : UIViewController
 
 @end

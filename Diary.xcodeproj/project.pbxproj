@@ -14,7 +14,7 @@
 		68D609BA1876C1D400BF5C4E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D609B91876C1D400BF5C4E /* main.m */; };
 		68D609BE1876C1D400BF5C4E /* DYAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D609BD1876C1D400BF5C4E /* DYAppDelegate.m */; };
 		68D609C11876C1D400BF5C4E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68D609BF1876C1D400BF5C4E /* Main.storyboard */; };
-		68D609C41876C1D400BF5C4E /* DYViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D609C31876C1D400BF5C4E /* DYViewController.m */; };
+		68D609C41876C1D400BF5C4E /* DYNoteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D609C31876C1D400BF5C4E /* DYNoteViewController.m */; };
 		68D609C61876C1D400BF5C4E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68D609C51876C1D400BF5C4E /* Images.xcassets */; };
 		68D609CD1876C1D400BF5C4E /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68D609CC1876C1D400BF5C4E /* XCTest.framework */; };
 		68D609CE1876C1D400BF5C4E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68D609AD1876C1D400BF5C4E /* Foundation.framework */; };
@@ -45,8 +45,8 @@
 		68D609BC1876C1D400BF5C4E /* DYAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DYAppDelegate.h; sourceTree = "<group>"; };
 		68D609BD1876C1D400BF5C4E /* DYAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DYAppDelegate.m; sourceTree = "<group>"; };
 		68D609C01876C1D400BF5C4E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		68D609C21876C1D400BF5C4E /* DYViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DYViewController.h; sourceTree = "<group>"; };
-		68D609C31876C1D400BF5C4E /* DYViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DYViewController.m; sourceTree = "<group>"; };
+		68D609C21876C1D400BF5C4E /* DYNoteViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DYNoteViewController.h; sourceTree = "<group>"; };
+		68D609C31876C1D400BF5C4E /* DYNoteViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DYNoteViewController.m; sourceTree = "<group>"; };
 		68D609C51876C1D400BF5C4E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		68D609CB1876C1D400BF5C4E /* DiaryTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DiaryTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		68D609CC1876C1D400BF5C4E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -115,8 +115,8 @@
 				68D609BC1876C1D400BF5C4E /* DYAppDelegate.h */,
 				68D609BD1876C1D400BF5C4E /* DYAppDelegate.m */,
 				68D609BF1876C1D400BF5C4E /* Main.storyboard */,
-				68D609C21876C1D400BF5C4E /* DYViewController.h */,
-				68D609C31876C1D400BF5C4E /* DYViewController.m */,
+				68D609C21876C1D400BF5C4E /* DYNoteViewController.h */,
+				68D609C31876C1D400BF5C4E /* DYNoteViewController.m */,
 				68D609C51876C1D400BF5C4E /* Images.xcassets */,
 				68D609B41876C1D400BF5C4E /* Supporting Files */,
 			);
@@ -251,7 +251,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				68D609BA1876C1D400BF5C4E /* main.m in Sources */,
-				68D609C41876C1D400BF5C4E /* DYViewController.m in Sources */,
+				68D609C41876C1D400BF5C4E /* DYNoteViewController.m in Sources */,
 				68D609BE1876C1D400BF5C4E /* DYAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -461,6 +461,7 @@
 				68D609DE1876C1D400BF5C4E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		68D609DF1876C1D400BF5C4E /* Build configuration list for PBXNativeTarget "DiaryTests" */ = {
 			isa = XCConfigurationList;
@@ -469,6 +470,7 @@
 				68D609E11876C1D400BF5C4E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
