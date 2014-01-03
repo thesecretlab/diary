@@ -21,6 +21,7 @@
 		68D609CF1876C1D400BF5C4E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68D609B11876C1D400BF5C4E /* UIKit.framework */; };
 		68D609D71876C1D400BF5C4E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 68D609D51876C1D400BF5C4E /* InfoPlist.strings */; };
 		68D609D91876C1D400BF5C4E /* DiaryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D609D81876C1D400BF5C4E /* DiaryTests.m */; };
+		68D609E41876CB8F00BF5C4E /* DYNote.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D609E31876CB8F00BF5C4E /* DYNote.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,8 @@
 		68D609D41876C1D400BF5C4E /* DiaryTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DiaryTests-Info.plist"; sourceTree = "<group>"; };
 		68D609D61876C1D400BF5C4E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		68D609D81876C1D400BF5C4E /* DiaryTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiaryTests.m; sourceTree = "<group>"; };
+		68D609E21876CB8F00BF5C4E /* DYNote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYNote.h; sourceTree = "<group>"; };
+		68D609E31876CB8F00BF5C4E /* DYNote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYNote.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +122,8 @@
 				68D609C31876C1D400BF5C4E /* DYNoteViewController.m */,
 				68D609C51876C1D400BF5C4E /* Images.xcassets */,
 				68D609B41876C1D400BF5C4E /* Supporting Files */,
+				68D609E21876CB8F00BF5C4E /* DYNote.h */,
+				68D609E31876CB8F00BF5C4E /* DYNote.m */,
 			);
 			path = Diary;
 			sourceTree = "<group>";
@@ -252,6 +257,7 @@
 			files = (
 				68D609BA1876C1D400BF5C4E /* main.m in Sources */,
 				68D609C41876C1D400BF5C4E /* DYNoteViewController.m in Sources */,
+				68D609E41876CB8F00BF5C4E /* DYNote.m in Sources */,
 				68D609BE1876C1D400BF5C4E /* DYAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
