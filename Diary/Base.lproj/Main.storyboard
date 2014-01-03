@@ -33,10 +33,10 @@
             </objects>
             <point key="canvasLocation" x="965" y="-577"/>
         </scene>
-        <!--Table View Controller - Notes-->
+        <!--Note List View Controller - Notes-->
         <scene sceneID="xdX-rJ-GAZ">
             <objects>
-                <tableViewController id="FAK-xL-1dC" sceneMemberID="viewController">
+                <tableViewController id="FAK-xL-1dC" customClass="DYNoteListViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="R4a-9w-Qat">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

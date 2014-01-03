@@ -47,7 +47,7 @@ One last step: set the title of the view controller.
 
 9. Select the bar at the top of the table view controller, and change its title to Notes.
 
-## 02-
+## 02-Note
 
 1. Make a new Objective-C class named "DYNote". Make it a subclass of NSObject.
 
@@ -60,4 +60,11 @@ Key features of the Note object at this point
     @property (readonly) NSDate* modifiedDate;
     - (int) wordCount;
 
+## 03- NoteCollection
+
+First, we'll create the code for the Notes screen (the table view controller.)
+
+1. Create a new Objective-C object. Call it DYNoteListViewController and make it a subclass of UITableViewController.
+2. Open the Storyboard. Select the Table View Controller. Make it use DYNoteListViewController as its class.
+3. Provide the code for DYNoteListViewController.m (there's nothin in the header yet.)
 
