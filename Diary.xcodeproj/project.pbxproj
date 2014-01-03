@@ -22,6 +22,7 @@
 		68D609D71876C1D400BF5C4E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 68D609D51876C1D400BF5C4E /* InfoPlist.strings */; };
 		68D609D91876C1D400BF5C4E /* DiaryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D609D81876C1D400BF5C4E /* DiaryTests.m */; };
 		68D609E41876CB8F00BF5C4E /* DYNote.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D609E31876CB8F00BF5C4E /* DYNote.m */; };
+		68D609E71876D26B00BF5C4E /* DYNoteListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D609E61876D26B00BF5C4E /* DYNoteListViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,8 @@
 		68D609D81876C1D400BF5C4E /* DiaryTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DiaryTests.m; sourceTree = "<group>"; };
 		68D609E21876CB8F00BF5C4E /* DYNote.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYNote.h; sourceTree = "<group>"; };
 		68D609E31876CB8F00BF5C4E /* DYNote.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYNote.m; sourceTree = "<group>"; };
+		68D609E51876D26B00BF5C4E /* DYNoteListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYNoteListViewController.h; sourceTree = "<group>"; };
+		68D609E61876D26B00BF5C4E /* DYNoteListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYNoteListViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +127,8 @@
 				68D609B41876C1D400BF5C4E /* Supporting Files */,
 				68D609E21876CB8F00BF5C4E /* DYNote.h */,
 				68D609E31876CB8F00BF5C4E /* DYNote.m */,
+				68D609E51876D26B00BF5C4E /* DYNoteListViewController.h */,
+				68D609E61876D26B00BF5C4E /* DYNoteListViewController.m */,
 			);
 			path = Diary;
 			sourceTree = "<group>";
@@ -255,6 +260,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68D609E71876D26B00BF5C4E /* DYNoteListViewController.m in Sources */,
 				68D609BA1876C1D400BF5C4E /* main.m in Sources */,
 				68D609C41876C1D400BF5C4E /* DYNoteViewController.m in Sources */,
 				68D609E41876CB8F00BF5C4E /* DYNote.m in Sources */,
