@@ -22,6 +22,18 @@
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
+// Called when the view controller is about to appear.
+- (void)viewWillAppear:(BOOL)animated {
+    // Make the note text view use the text that's in the note.
+    self.noteTextView.text = self.note.text;
+}
+
+// Called just before the view controlled is about to go away.
+- (void)viewWillDisappear:(BOOL)animated {
+    // Store the text that's in the note text view into the note itself.
+    self.note.text = self.noteTextView.text;
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

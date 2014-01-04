@@ -62,7 +62,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="vXZ-lx-hvc" kind="push" id="VlQ-Sh-n8l"/>
+                                    <segue destination="vXZ-lx-hvc" kind="push" identifier="showNote" id="VlQ-Sh-n8l"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

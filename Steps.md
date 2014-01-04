@@ -90,7 +90,12 @@ First, we'll create the code for the Notes screen (the table view controller.)
 
 *Outlets. Segues.*
 
+First, set up DYNoteViewController by adding a property to store the note and connecting the text view to an outlet.
+
 1. Go to the Note View Controller in the storyboard.
 2. Connect the text field to the view controller - put the outlet in the class extension in DYNoteViewController.m.
 3. Add a DYNote* property called 'note' in DYNoteViewController.h.
+4. Implement the `viewWillAppear:` and `viewWillDisappear:` methods in DYNoteViewController.
 
+1. Import DYNoteViewController.m in DYNoteListViewController.m.
+2. Implement the `prepareForSegue:` and `viewWillAppear:` in DYNoteListViewController.

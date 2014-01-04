@@ -8,6 +8,7 @@
 
 #import "DYNoteListViewController.h"
 #import "DYNote.h"
+#import "DYNoteViewController.h"
 
 // This is a 'class extension', which lets you add methods, properties and variables
 // to a class without having to put them in the header file, which other classes can see.
@@ -71,6 +72,35 @@
     // Return the cell to the table view, which will then show it.
     return cell;
     
+}
+
+// Called when the view controller is about to move to another view controller.
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    // If this is the "showNote" segue, then we're about to segue to the Note View Controller because the user tapped on a table view cell.
+    if ([segue.identifier isEqualToString:@"showNote"]) {
+        
+        // Get the note view controller we're about to move to.
+        DYNoteViewController* noteViewController = segue.destinationViewController;
+        
+        // Get the cell that was tapped on.
+        UITableViewCell* cell = sender;
+        
+        // Work out which row this cell was.
+        NSIndexPath* indexPath = [self.tableView indexPathForCell:cell];
+        
+        // Use that to get the appropriate note.
+        DYNote* note = _notes[indexPath.row];
+        
+        noteViewController.note = note;
+    }
+}
+
+// Called when the view controller is about to appear.
+- (void)viewWillAppear:(BOOL)animated {
+    
+    // Because the notes might have been changed, make the table view reload all data.
+    [self.tableView reloadData];
 }
 
 @end
