@@ -40,4 +40,37 @@
     }
 }
 
+// Returns the number of sections (groups of cells) in the table
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    // There is only one section in this table.
+    return 1;
+}
+
+
+// Returns the number of rows (cells) in the given section.
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    // There's only ever one section, so we don't need to worry about checking the value of 'section'.
+    
+    // The number of rows is equal to the number of notes we have.
+    return [_notes count];
+}
+
+// Returns a table view cell for use, which shows the data we want to display.
+- (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    // Get a cell to use.
+    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"NoteCell"];
+    
+    // Work out which note should be shown in this cell. 
+    DYNote* note = _notes[indexPath.row];
+    
+    // Give the note's text to the cell.
+    cell.textLabel.text = note.text;
+    
+    // Return the cell to the table view, which will then show it.
+    return cell;
+    
+}
+
 @end

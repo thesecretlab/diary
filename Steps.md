@@ -2,6 +2,8 @@
 
 ## 00-Start
 
+*Creating a project, understanding bundle identifiers, class prefixes. The concept of universal apps.*
+
 1. Create a new project.
     1. Create a single-page application.
     2. Name it 'Diary'. 
@@ -17,6 +19,8 @@ We're now going to make the app use the provided icons.
 2. Select the AppIcon image set.
 3. In the Attributes selector, turn on 'iPad 7.0 and later sizes'.
 4. Drag the appropriate images into the image slots.
+
+*Creating new classes. View controllers. Using the interface builder. Making connections.*
 
 We're going to make DYViewController become the DYNoteViewController.
 
@@ -49,6 +53,8 @@ One last step: set the title of the view controller.
 
 ## 02-Note
 
+*Objective-C syntax. Properties. Methods.*
+
 1. Make a new Objective-C class named "DYNote". Make it a subclass of NSObject.
 
 2. Add content as per DYNote.h and DYNote.m.
@@ -62,9 +68,20 @@ Key features of the Note object at this point
 
 ## 03- NoteCollection
 
+*Foundation. Arrays and other container objects. Mutable and immutable objects.*
+
 First, we'll create the code for the Notes screen (the table view controller.)
 
 1. Create a new Objective-C object. Call it DYNoteListViewController and make it a subclass of UITableViewController.
 2. Open the Storyboard. Select the Table View Controller. Make it use DYNoteListViewController as its class.
-3. Provide the code for DYNoteListViewController.m (there's nothin in the header yet.)
+3. Provide the code for DYNoteListViewController.m (there's nothing in the header yet.)
 
+## 04-NoteList
+
+*Table views. Delegates. Configuring table view cells.*
+
+1. Open the storyboard. 
+1. Change the Table View's Content from Static Cells to Dynamic Prototypes.
+1. Select the table view cell.
+2. Set its Identifier to NoteCell.
+3. Add the `numberOfSectionsInTableView:`, `tableView: numberOfRowsInSection:` and `tableView: cellForRowAtIndexPath:` methods to DYNoteListViewController.m.
