@@ -99,3 +99,8 @@ First, set up DYNoteViewController by adding a property to store the note and co
 
 1. Import DYNoteViewController.m in DYNoteListViewController.m.
 2. Implement the `prepareForSegue:` and `viewWillAppear:` in DYNoteListViewController.
+
+## 06-NoteAddingAndRemoval
+
+1. Modify the `viewDidLoad` method in DYNoteListViewController to add the Edit button.
+2. Implement the `tableView: commitEditingStyle: forRowAtIndexPath:` method.

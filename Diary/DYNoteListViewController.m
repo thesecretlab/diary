@@ -39,6 +39,9 @@
         // Add the note to the list
         [_notes addObject:note];
     }
+    
+    // Get the table view's "Edit" button, which will put the table into Edit mode when tapped
+    self.navigationItem.leftBarButtonItem = self.editButtonItem;
 }
 
 // Returns the number of sections (groups of cells) in the table
@@ -101,6 +104,26 @@
     
     // Because the notes might have been changed, make the table view reload all data.
     [self.tableView reloadData];
+}
+
+
+// Called when the user has tapped the Delete button.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    // We only want to take action if the edit that was made is a deletion.
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
+        // Find the note that we're talking about
+        DYNote* note = _notes[indexPath.row];
+        
+        // Remove it from the list of notes
+        [_notes removeObject:note];
+        
+        // Finally, remove the cell.
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+        
+    }
+    
 }
 
 @end
