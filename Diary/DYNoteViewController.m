@@ -10,6 +10,8 @@
 
 @interface DYNoteViewController ()
 
+@property (weak, nonatomic) IBOutlet UITextView *noteTextView;
+
 @end
 
 @implementation DYNoteViewController

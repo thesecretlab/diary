@@ -28,6 +28,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Note" id="lzV-Rh-FOG"/>
+                    <connections>
+                        <outlet property="noteTextView" destination="e14-II-HsQ" id="KPR-PV-5h5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>

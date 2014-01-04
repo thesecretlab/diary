@@ -85,3 +85,12 @@ First, we'll create the code for the Notes screen (the table view controller.)
 1. Select the table view cell.
 2. Set its Identifier to NoteCell.
 3. Add the `numberOfSectionsInTableView:`, `tableView: numberOfRowsInSection:` and `tableView: cellForRowAtIndexPath:` methods to DYNoteListViewController.m.
+
+## 05-NoteEditing
+
+*Outlets. Segues.*
+
+1. Go to the Note View Controller in the storyboard.
+2. Connect the text field to the view controller - put the outlet in the class extension in DYNoteViewController.m.
+3. Add a DYNote* property called 'note' in DYNoteViewController.h.
+
