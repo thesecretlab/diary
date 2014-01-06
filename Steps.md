@@ -114,3 +114,12 @@ Next, we'll add a + button to the top-right - when tapped, it'll add a new note.
 3. Change the new button's identifier to "Add".
 4. Connect the button to an action method, called "addNote:".
 5. Implement the `addNote:` method.
+
+##07-CoreData
+
+1. Create a new Managed Object Model. Call it "Diary".
+2. Open the new model. Add a new Entity. Call it "Note".
+3. Add an attribute called "text", which is a String.
+4. Add two attributes: "createdDate" and "modifiedDate", both Dates.
+
+5. Update DYNote.h and DYNote.m to reflect the latest changes. Basically, almost all of the code in these files are changed.
