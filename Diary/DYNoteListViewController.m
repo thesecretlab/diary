@@ -26,20 +26,6 @@
     // Create the array that stores the notes
     _notes = [NSMutableArray array];
     
-    // Create 100 test notes
-    
-    for (int i = 1; i <= 100; i++) {
-        // Make a note
-        DYNote* note = [[DYNote alloc] init];
-        
-        // Create the note's text
-        NSString* text = [NSString stringWithFormat:@"Note %i", i];
-        note.text = text;
-        
-        // Add the note to the list
-        [_notes addObject:note];
-    }
-    
     // Get the table view's "Edit" button, which will put the table into Edit mode when tapped
     self.navigationItem.leftBarButtonItem = self.editButtonItem;
 }
@@ -106,7 +92,6 @@
     [self.tableView reloadData];
 }
 
-
 // Called when the user has tapped the Delete button.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -123,6 +108,27 @@
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
         
     }
+}
+
+// Called when the user taps the Add button.
+- (IBAction)addNote:(id)sender {
+    
+    // Create a new, empty note
+    DYNote* note = [[DYNote alloc] init];
+    
+    note.text = @"New note";
+    
+    // Insert the new note at the start of the array
+    [_notes insertObject:note atIndex:0];
+    
+    // Tell the table view to add a new cell for this note:
+    
+    // First, create an index path that describes the position of the cell
+    
+    NSIndexPath* indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    
+    // Now add the row
+    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationTop];
     
 }
 

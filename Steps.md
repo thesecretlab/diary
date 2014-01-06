@@ -1,3 +1,4 @@
+<<<<<<< Local Changes
 # Steps
 
 ## 00-Start
@@ -104,3 +105,12 @@ First, set up DYNoteViewController by adding a property to store the note and co
 
 1. Modify the `viewDidLoad` method in DYNoteListViewController to add the Edit button.
 2. Implement the `tableView: commitEditingStyle: forRowAtIndexPath:` method.
+
+Next, we'll add a + button to the top-right - when tapped, it'll add a new note.
+
+1. Remove the code that creates the demo notes.
+1. Open the storyboard.
+2. Add a bar button item to the top-right of the navigation bar in the Notes List View Controller.
+3. Change the new button's identifier to "Add".
+4. Connect the button to an action method, called "addNote:".
+5. Implement the `addNote:` method.
