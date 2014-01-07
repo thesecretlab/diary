@@ -32,6 +32,13 @@
 - (void)viewWillDisappear:(BOOL)animated {
     // Store the text that's in the note text view into the note itself.
     self.note.text = self.noteTextView.text;
+    
+    // Save the note.
+    NSError* error = nil;
+    [self.note.managedObjectContext save:&error];
+    if (error != nil) {
+        NSLog(@"Failed to save the note! %@", error);
+    }
 }
 
 - (void)didReceiveMemoryWarning

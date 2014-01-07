@@ -121,5 +121,6 @@ Next, we'll add a + button to the top-right - when tapped, it'll add a new note.
 2. Open the new model. Add a new Entity. Call it "Note".
 3. Add an attribute called "text", which is a String.
 4. Add two attributes: "createdDate" and "modifiedDate", both Dates.
-
+4. Set the Class of the entity to `DYNote`.
 5. Update DYNote.h and DYNote.m to reflect the latest changes. Basically, almost all of the code in these files are changed.
+6. Update DYNoteListViewController.m to use DYNoteStorage.

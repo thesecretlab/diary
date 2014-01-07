@@ -56,8 +56,7 @@ static DYNoteStorage* _sharedStorage;
     if (_managedObjectModel != nil)
         return _managedObjectModel;
     
-    // Otherwise: work out where to find the file that contains the model...
-    NSURL* modelURL = [[NSBundle mainBundle] URLForResource:@"DiaryModel" withExtension:@"momd"];
+    NSURL* modelURL = [[NSBundle mainBundle] URLForResource:@"Diary" withExtension:@"momd"];
     
     // ..and then load it.
     _managedObjectModel = [[NSManagedObjectModel alloc] initWithContentsOfURL:modelURL];
