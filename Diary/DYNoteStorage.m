@@ -170,5 +170,17 @@ static DYNoteStorage* _sharedStorage;
     return newFetchedResultsController;
 }
 
+// Returns a note, given its URL in the database.
+- (DYNote *)noteWithURL:(NSURL *)url {
+    // First, we use the URL to ask the persistent store coordinator for an object ID.
+    NSManagedObjectID* objectID = [self.persistentStoreCoordinator managedObjectIDForURIRepresentation:url];
+    
+    // Next, we get the object with that ID.
+    DYNote* note = (DYNote*)[self.managedObjectContext objectWithID:objectID];
+    
+    return note;
+    
+}
+
 
 @end

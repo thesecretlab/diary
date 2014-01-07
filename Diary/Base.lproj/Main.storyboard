@@ -7,7 +7,7 @@
         <!--Note View Controller - Note-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="DYNoteViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NoteViewController" id="vXZ-lx-hvc" customClass="DYNoteViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="p6a-UE-632"/>
                         <viewControllerLayoutGuide type="bottom" id="Scf-Dp-vnd"/>

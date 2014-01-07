@@ -141,3 +141,10 @@ Next, we'll update the table view and fetched results controller delegate method
 1. Update the `numberOfSectionsInTableView:`, `tableView:numberOfRowsInSection:`, `configureCell:atIndexPath:`, `prepareForSegue:sender:`, `controllerWillChangeContent:`, `controllerDidChangeContent:`,  and `controller:didChangeObject:atIndexPath:forChangeType:newIndexPath:` methods.
 
 2. Implement the `searchDisplayControllerWillBeginSearch:`, `searchDisplayControllerWillEndSearch:`, `searchBar:textDidChange:` and `updateSearchQuery:` methods.
+
+##08-UserDefaults
+
+1. Open the storyboard. Select the Note View Controller. Change its Storyboard ID to 'NoteViewController'.
+2. Update DYNoteStorage.h and .m to add the `noteWithURL:` method.
+3. Update DYNoteListViewController.m's `viewDidLoad` method.
+4. Update DYNoteViewController.m's `viewDidLoad` method.

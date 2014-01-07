@@ -25,4 +25,6 @@
 - (DYNote*) createNote;
 - (void) deleteNote:(DYNote*)note;
 
+- (DYNote*) noteWithURL:(NSURL*)url;
+
 @end

@@ -20,6 +20,12 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    // When the screen loads, get the URL of the object that we're showing.
+    // Store it into the user defaults, so that if the app exits while we're editing this
+    // note, the app will return to it.
+    NSURL* noteURL = [self.note.objectID URIRepresentation];
+    [[NSUserDefaults standardUserDefaults] setURL:noteURL forKey:@"current_note"];
 }
 
 // Called when the view controller is about to appear.
@@ -39,6 +45,8 @@
     if (error != nil) {
         NSLog(@"Failed to save the note! %@", error);
     }
+    
+    [[NSUserDefaults standardUserDefaults] setURL:nil forKey:@"current_note"];
 }
 
 - (void)didReceiveMemoryWarning
