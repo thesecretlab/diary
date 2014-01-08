@@ -24,6 +24,7 @@
 @dynamic text;
 @dynamic createdDate;
 @dynamic modifiedDate;
+@dynamic location;
 
 - (void)awakeFromInsert {
     // Because these properties are readwrite, they can be assigned to.

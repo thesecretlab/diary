@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @import CoreData;
+@import CoreLocation;
 
 // By making the object an NSManagedObject, it will know how to exist in a database.
 @interface DYNote : NSManagedObject
@@ -22,6 +23,9 @@
 
 /// The date and time that the note was last modified.
 @property (readonly) NSDate* modifiedDate;
+
+/// The location of the note.
+@property (nonatomic, strong) CLLocation* location;
 
 /// Returns the number of words in the note.
 - (int) wordCount;

@@ -173,5 +173,22 @@ Next, we'll link up the UI to code.
     * Connect the label to an outlet called locationLabel.
     * Connect the activity indicator to an outlet called locationActivity.
     
+Next, make the code know about DYNotes.
+
+2. Open DYLocationViewController.h.
+3. Import DYNote.h, and add a property: a DYNote called 'note'.
+
+We now need to make notes store location info. We'll store locations as archived CLLocation objects.
+
+1. Open Diary.xcdatamodeld.
+2. Add a new attribute to the Note entity: a Transformable called 'location'.
+
+Transformable attributes convert between objects and raw data. Any object that conforms to `NSCoding`, which is most data objects, can be stored.
+
+3. Open DYNote.h. `@import` CoreLocation, and add a CLLocation property called 'location'.
+4. Open DYNote.m, and mark the property as `@dynamic`.
+
+Before you next re-launch the app, you'll need to erase the app and reinstall it, to prevent errors.
+
 
 
