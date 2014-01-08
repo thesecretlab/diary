@@ -7,6 +7,7 @@
 //
 
 #import "DYNoteViewController.h"
+#import "DYLocationViewController.h"
 
 @interface DYNoteViewController ()
 
@@ -53,6 +54,19 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+// Called when a segue is about to happen.
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([segue.identifier isEqualToString:@"showLocation"]) {
+        
+        // If this is the showLocation segue, we're moving to a DYLocationViewController.
+        DYLocationViewController* locationViewController = segue.destinationViewController;
+        
+        // Give it the note.
+        locationViewController.note = self.note;
+    }
 }
 
 @end

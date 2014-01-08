@@ -190,5 +190,9 @@ Transformable attributes convert between objects and raw data. Any object that c
 
 Before you next re-launch the app, you'll need to erase the app and reinstall it, to prevent errors.
 
+Next, we'll make the DYLocationViewController be given the note when the Location button is tapped.
+
+1. Import DYLocationViewController.h in DYNoteViewController.
+2. Add the `prepareForSegue:` method to DYNoteViewController.
 
 

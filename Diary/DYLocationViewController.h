@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DYNote.h"
 
 @interface DYLocationViewController : UIViewController
+
+@property (strong) DYNote* note;
 
 @end
