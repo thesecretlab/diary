@@ -7,12 +7,15 @@
 //
 
 #import "DYLocationViewController.h"
+@import MapKit;
 
-@interface DYLocationViewController () <CLLocationManagerDelegate>
+@interface DYLocationViewController () <CLLocationManagerDelegate, MKMapViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *locationLabel;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *locationActivity;
 
 @property (strong) CLLocationManager* locationManager;
+
+@property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
 @end
 
@@ -35,6 +38,9 @@
         // If the note already has a location, show the location in the text field.
 
         self.locationLabel.text = [self.note.location description];
+        
+        [self updateAnnotation];
+        
     } else {
         
         // Otherwise, tell the user that we're looking for a location.
@@ -74,6 +80,8 @@
         // We're now done looking, so stop the activity indicator and stop the location manager.
         [self.locationActivity stopAnimating];
         [self.locationManager stopUpdatingLocation];
+        
+        [self updateAnnotation];
     }
     
 }
@@ -100,6 +108,22 @@
     
     // Return to the previous view controller.
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+// Called by viewDidLoad: and locationManager:didUpdateLocations: to update the annotation.
+
+- (void) updateAnnotation {
+    
+    // Remove any existing annotations on the map.
+    [self.mapView removeAnnotations:self.mapView.annotations];
+    
+    // Create a new annotation
+    MKPointAnnotation* point = [[MKPointAnnotation alloc] init];
+    point.coordinate = self.note.location.coordinate;
+    point.title = @"Location";
+    
+    // Add it to the map
+    [self.mapView addAnnotation:point];
 }
 
 @end

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		68B4DCB3187D5C1D006E8C29 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68B4DCB2187D5C1D006E8C29 /* CoreLocation.framework */; };
 		68B4DCB6187D5D65006E8C29 /* DYLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B4DCB5187D5D65006E8C29 /* DYLocationViewController.m */; };
+		68B4DCB7187D7050006E8C29 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68B4DCB0187D5C18006E8C29 /* MapKit.framework */; };
 		68D609AE1876C1D400BF5C4E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68D609AD1876C1D400BF5C4E /* Foundation.framework */; };
 		68D609B01876C1D400BF5C4E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68D609AF1876C1D400BF5C4E /* CoreGraphics.framework */; };
 		68D609B21876C1D400BF5C4E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68D609B11876C1D400BF5C4E /* UIKit.framework */; };
@@ -77,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68B4DCB7187D7050006E8C29 /* MapKit.framework in Frameworks */,
 				68B4DCB3187D5C1D006E8C29 /* CoreLocation.framework in Frameworks */,
 				68D609B01876C1D400BF5C4E /* CoreGraphics.framework in Frameworks */,
 				68D609B21876C1D400BF5C4E /* UIKit.framework in Frameworks */,

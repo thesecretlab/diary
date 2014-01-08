@@ -212,3 +212,19 @@ Finally, we'll make the user able to delete the location.
 7. Connect it to a new method called removeNote:.
 8. Implement the method.
 
+##10-Maps
+
+1. Make the project use the MapKit framework.
+2. Open the Storyboard. 
+    * Delete the label.
+    * Add a Map View to the Location View Controller. Make it fill the screen. Turn on Shows User Location.
+    * Change the activity indicator to a Large White one, and keep it above the Map View.
+    * Make the map use the view controller as its delegate.
+    
+We'll now connect it to the code.
+
+3. Open DYLocationViewController.m.
+4. `@import` MapKit.
+3. Connect the Map View to an outlet called mapView.
+4. Implement the `updateAnnotation` method, and update `locationManager: didUpdateLocations:` and `viewDidLoad`.
+
