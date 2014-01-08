@@ -92,4 +92,14 @@
     // Dispose of any resources that can be recreated.
 }
 
+// Called when the Trash button is tapped.
+- (IBAction)removeNote:(id)sender {
+    
+    // Remove the location from the note
+    self.note.location = nil;
+    
+    // Return to the previous view controller.
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 @end

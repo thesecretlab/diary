@@ -1,3 +1,4 @@
+<<<<<<< Local Changes
 # Steps
 
 ## 00-Start
@@ -202,4 +203,12 @@ We'll now make DYLocationViewController get the location, when it appears.
 1. Make DYLocationViewController conform to CLLocationManagerDelegate.
 2. Add a new property to DYLocationViewController's class extension: a CLLocationManager called locationManager.
 3. Update `viewDidLoad` and implement `locationManager: didUpdateLocations:` and `locationManager: didFailWithError:` in DYLocationManager.m.
+
+Finally, we'll make the user able to delete the location.
+
+4. Open the storyboard, and go to the Location View Controller.
+5. Drag in a bar button item into the right side of the navigation bar.
+6. Set its identifier to Trash.
+7. Connect it to a new method called removeNote:.
+8. Implement the method.
 

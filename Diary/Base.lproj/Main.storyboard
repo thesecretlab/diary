@@ -73,7 +73,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Location" id="HeS-7I-hRc"/>
+                    <navigationItem key="navigationItem" title="Location" id="HeS-7I-hRc">
+                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="4WX-UL-Vm0">
+                            <connections>
+                                <action selector="removeNote:" destination="gSD-Cp-B9h" id="ea1-TP-7JK"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="locationActivity" destination="8YE-rJ-79E" id="7J8-Bg-4Mt"/>
                         <outlet property="locationLabel" destination="HAv-EM-Zh6" id="XTm-uG-SH0"/>
