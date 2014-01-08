@@ -196,3 +196,10 @@ Next, we'll make the DYLocationViewController be given the note when the Locatio
 2. Add the `prepareForSegue:` method to DYNoteViewController.
 
 
+We'll now make DYLocationViewController get the location, when it appears.
+
+1. Open DYLocationViewController.m.
+1. Make DYLocationViewController conform to CLLocationManagerDelegate.
+2. Add a new property to DYLocationViewController's class extension: a CLLocationManager called locationManager.
+3. Update `viewDidLoad` and implement `locationManager: didUpdateLocations:` and `locationManager: didFailWithError:` in DYLocationManager.m.
+
