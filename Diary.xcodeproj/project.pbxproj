@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		68B4DCB3187D5C1D006E8C29 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68B4DCB2187D5C1D006E8C29 /* CoreLocation.framework */; };
+		68B4DCB6187D5D65006E8C29 /* DYLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B4DCB5187D5D65006E8C29 /* DYLocationViewController.m */; };
 		68D609AE1876C1D400BF5C4E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68D609AD1876C1D400BF5C4E /* Foundation.framework */; };
 		68D609B01876C1D400BF5C4E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68D609AF1876C1D400BF5C4E /* CoreGraphics.framework */; };
 		68D609B21876C1D400BF5C4E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68D609B11876C1D400BF5C4E /* UIKit.framework */; };
@@ -38,6 +40,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		68B4DCB0187D5C18006E8C29 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		68B4DCB2187D5C1D006E8C29 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		68B4DCB4187D5D65006E8C29 /* DYLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYLocationViewController.h; sourceTree = "<group>"; };
+		68B4DCB5187D5D65006E8C29 /* DYLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYLocationViewController.m; sourceTree = "<group>"; };
 		68D609AA1876C1D400BF5C4E /* Diary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Diary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68D609AD1876C1D400BF5C4E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		68D609AF1876C1D400BF5C4E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -71,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68B4DCB3187D5C1D006E8C29 /* CoreLocation.framework in Frameworks */,
 				68D609B01876C1D400BF5C4E /* CoreGraphics.framework in Frameworks */,
 				68D609B21876C1D400BF5C4E /* UIKit.framework in Frameworks */,
 				68D609AE1876C1D400BF5C4E /* Foundation.framework in Frameworks */,
@@ -112,6 +119,8 @@
 		68D609AC1876C1D400BF5C4E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				68B4DCB2187D5C1D006E8C29 /* CoreLocation.framework */,
+				68B4DCB0187D5C18006E8C29 /* MapKit.framework */,
 				68D609AD1876C1D400BF5C4E /* Foundation.framework */,
 				68D609AF1876C1D400BF5C4E /* CoreGraphics.framework */,
 				68D609B11876C1D400BF5C4E /* UIKit.framework */,
@@ -137,6 +146,8 @@
 				68D60A79187AA6D700BF5C4E /* Diary.xcdatamodeld */,
 				68D609E8187A939300BF5C4E /* DYNoteStorage.h */,
 				68D609E9187A939300BF5C4E /* DYNoteStorage.m */,
+				68B4DCB4187D5D65006E8C29 /* DYLocationViewController.h */,
+				68B4DCB5187D5D65006E8C29 /* DYLocationViewController.m */,
 			);
 			path = Diary;
 			sourceTree = "<group>";
@@ -270,6 +281,7 @@
 			files = (
 				68D609E71876D26B00BF5C4E /* DYNoteListViewController.m in Sources */,
 				68D609BA1876C1D400BF5C4E /* main.m in Sources */,
+				68B4DCB6187D5D65006E8C29 /* DYLocationViewController.m in Sources */,
 				68D609EA187A939300BF5C4E /* DYNoteStorage.m in Sources */,
 				68D609C41876C1D400BF5C4E /* DYNoteViewController.m in Sources */,
 				68D60A7B187AA6D700BF5C4E /* Diary.xcdatamodeld in Sources */,

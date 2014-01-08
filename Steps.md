@@ -1,4 +1,3 @@
-<<<<<<< Local Changes
 # Steps
 
 ## 00-Start
@@ -148,3 +147,31 @@ Next, we'll update the table view and fetched results controller delegate method
 2. Update DYNoteStorage.h and .m to add the `noteWithURL:` method.
 3. Update DYNoteListViewController.m's `viewDidLoad` method.
 4. Update DYNoteViewController.m's `viewDidLoad` method.
+
+##09-Location
+
+1. Add the CoreLocation framework to the project.
+
+Next, we'll set up the UI.
+
+1. Open the storyboard.
+2. Add a toolbar to the Note View Controller.
+3. Select the bar button item that comes with the toolbar. Rename it to 'Location'.
+4. Add a new view controller.
+5. Set its title to 'Location'.
+6. Connect the Location button the new view controller. Give it a Push segue. Name the segue 'showLocation'.
+7. Add a label and an activity indicator. 
+    * Make the label fill the width of the screen, and center the text.
+    * Put the activity indicator beneath the label.
+    * Turn on "hides when stopped".
+8. Create a new view controller. Call it DYLocationViewController.
+9. Set the class of the newly added screen to DYLocationViewController.
+
+Next, we'll link up the UI to code.
+
+1. Add outlets to DYLocationViewController's class extension:
+    * Connect the label to an outlet called locationLabel.
+    * Connect the activity indicator to an outlet called locationActivity.
+    
+
+
