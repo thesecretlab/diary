@@ -228,3 +228,29 @@ We'll now connect it to the code.
 3. Connect the Map View to an outlet called mapView.
 4. Implement the `updateAnnotation` method, and update `locationManager: didUpdateLocations:` and `viewDidLoad`.
 
+##11-Audio
+
+1. Open the storyboard, and go to the Note View Controller.
+2. Add a Flexible Space to the toolbar at the bottom of the screen.
+3. Add a new Bar Button Item to the toolbar. Change its label to 'Audio'.
+4. Add a new view controller. Connect the Audio button to the view controller with a Push segue. Name the segue 'showAudio'.
+5. Set the title of the view controller to Audio.
+
+Next, we'll create a new view controller to handle the audio-related tasks of the new screen.
+
+1. Create a new UIViewController subclass, called `DYAudioViewController`.
+2. Set the class of the 'Audio' view controller.
+
+The buttons in this view controller will be this: a "play/record/stop" button (which changes state based on whether or not we're recording), and a delete button. The delete button will be in the corner, like in the location view; the play/record/stop button will be in the view. 
+
+1. Open the Images.xcassets bundle.
+2. Click +, and add a new Image Set.
+3. Name it RecordButton, and drop the recording icons onto it.
+4. Do the same for the Play and Stop buttons. (You can also drag pairs of images directly into the list of image sets to quickly create them.)
+5. Open the Storyboard. Go to the Audio screen.
+6. Add a button. Change its type to Custom. Resize it so that it's about 3 times as big, to increase its touch size.
+7. Delete the Title text, and change the Image to RecordButton.
+9. Drag a Bar Button Item into the right hand side of the navigation bar. Change its identifier to Trash.
+
+
+
