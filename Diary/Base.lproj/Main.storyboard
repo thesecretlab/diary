@@ -72,13 +72,23 @@
                                 <state key="normal" image="RecordButton">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="controlButtonTapped:" destination="Lam-5e-Z87" eventType="touchUpInside" id="TJj-pB-MQs"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Audio" id="3g4-Pg-LMV">
-                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="K9v-Lr-lZu"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="K9v-Lr-lZu">
+                            <connections>
+                                <action selector="removeAudio:" destination="Lam-5e-Z87" id="Qrb-Bh-CIN"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="controlButton" destination="EII-sf-pFY" id="bII-mF-uUI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GrX-57-roO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

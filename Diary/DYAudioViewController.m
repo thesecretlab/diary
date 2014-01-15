@@ -10,10 +10,11 @@
 
 @interface DYAudioViewController ()
 
+@property (weak, nonatomic) IBOutlet UIButton *controlButton;
+
 @end
 
 @implementation DYAudioViewController
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -33,6 +34,12 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)controlButtonTapped:(id)sender {
+}
+
+- (IBAction)removeAudio:(id)sender {
 }
 
 @end

@@ -252,5 +252,11 @@ The buttons in this view controller will be this: a "play/record/stop" button (w
 7. Delete the Title text, and change the Image to RecordButton.
 9. Drag a Bar Button Item into the right hand side of the navigation bar. Change its identifier to Trash.
 
+Next, we'll connect up the code.
+
+1. Open DYAudioViewController.m in the assistant.
+2. Connect the record button to BOTH an outlet, called controlButton, and an action, called controlButtonTapped.
+3. Connect the Trash button to an action called removeAudio:.
+
 
 
