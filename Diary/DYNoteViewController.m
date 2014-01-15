@@ -8,6 +8,7 @@
 
 #import "DYNoteViewController.h"
 #import "DYLocationViewController.h"
+#import "DYAudioViewController.h"
 
 @interface DYNoteViewController ()
 
@@ -66,6 +67,15 @@
         
         // Give it the note.
         locationViewController.note = self.note;
+    }
+    
+    if ([segue.identifier isEqualToString:@"showAudio"]) {
+        
+        // If this is the showAudio segue, we're moving to a DYAudioViewController.
+        DYAudioViewController* audioViewController = segue.destinationViewController;
+        
+        // Give it the note.
+        audioViewController.note = self.note;
     }
 }
 

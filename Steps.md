@@ -262,3 +262,20 @@ Next, we'll make the database be able to store the audio note data.
 5. Open Diary.xcdatamodeld, and add a new attribute called 'audioNote'. Make it a binary data.
 6. Open DYNote.h, and add a property for the new attribute.
 7. Mark the new property as `@dynamic` in DYNote.m.
+
+Next, we'll add the code.
+
+1. `@import AVFoundation` in DYAudioViewController.m.
+
+2. Open DYAudioViewController.h. `#import "DYNote.h"`. 
+3. Add a DYNote* property to the class.
+4. Add two new properties to DYAudioViewController.m:
+   * `@property (strong) AVAudioPlayer* audioPlayer;` and
+   * `@property (strong) AVAudioPlayer* audioRecorder;`
+   
+Next, we'll make the note view controller pass its note to the audio view controller.
+
+1. Open DYNoteViewController.m
+2. `#import DYAudioViewController.h`.
+3. Update `prepareForSegue` to make it pass the note to the audio controller.
+
