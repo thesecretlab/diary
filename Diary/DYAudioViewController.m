@@ -10,7 +10,7 @@
 
 @import AVFoundation;
 
-@interface DYAudioViewController () {
+@interface DYAudioViewController () <AVAudioPlayerDelegate> {
     BOOL recordingAllowed;
 }
 
@@ -170,6 +170,9 @@
         NSLog(@"Error loading note! %@", error);
     }
     
+    // Tell the audio player to contact this object when it changes state.
+    self.audioPlayer.delegate = self;
+    
     // Start playback.
     [self.audioPlayer play];
 }
@@ -252,6 +255,13 @@
     // another screen.
     [self stopPlaying];
     [self stopRecording];
+}
+
+// Called when the audio player finishes playback.
+- (void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag {
+
+    // We're no longer playing back, so update the control button.
+    [self updateControlButton];
 }
 
 @end

@@ -285,7 +285,11 @@ Implement DYAudioNoteViewController.
 1. Add a `BOOL` instance variable to DYAudioNoteViewController's class extension, called `recordingAllowed`.
 1. Implement the `controlButtonTapped:`, `startRecording`, `stopRecording`, `startPlaying`, `stopPlaying`, `removeAudio:`, `updateControlButton` and `viewWillDisappear` methods. Update the `viewDidLoad` method.
 
+Next, we'll make the play/pause/stop button update when the end of the recording is reached.
 
+1. Make DYAudioNoteViewController conform to the AVAudioPlayerDelegate protocol.
+2. Add the `audioPlayerDidFinishPlaying: successfully:` method.
+3. Update the `startPlaying` method to set the delegate.
 
 
 
