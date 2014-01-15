@@ -279,3 +279,13 @@ Next, we'll make the note view controller pass its note to the audio view contro
 2. `#import DYAudioViewController.h`.
 3. Update `prepareForSegue` to make it pass the note to the audio controller.
 
+
+Implement DYAudioNoteViewController.
+
+1. Add a `BOOL` instance variable to DYAudioNoteViewController's class extension, called `recordingAllowed`.
+1. Implement the `controlButtonTapped:`, `startRecording`, `stopRecording`, `startPlaying`, `stopPlaying`, `removeAudio:`, `updateControlButton` and `viewWillDisappear` methods. Update the `viewDidLoad` method.
+
+
+
+
+
