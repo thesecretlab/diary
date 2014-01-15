@@ -27,6 +27,9 @@
 /// The location of the note.
 @property (nonatomic, strong) CLLocation* location;
 
+/// The audio note attached, stored as an NSData.
+@property (nonatomic, strong) NSData* audioNote;
+
 /// Returns the number of words in the note.
 - (int) wordCount;
 

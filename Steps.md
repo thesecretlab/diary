@@ -1,4 +1,3 @@
-<<<<<<< Local Changes
 # Steps
 
 ## 00-Start
@@ -258,5 +257,8 @@ Next, we'll connect up the code.
 2. Connect the record button to BOTH an outlet, called controlButton, and an action, called controlButtonTapped.
 3. Connect the Trash button to an action called removeAudio:.
 
+Next, we'll make the database be able to store the audio note data.
 
-
+5. Open Diary.xcdatamodeld, and add a new attribute called 'audioNote'. Make it a binary data.
+6. Open DYNote.h, and add a property for the new attribute.
+7. Mark the new property as `@dynamic` in DYNote.m.
