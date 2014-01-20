@@ -291,5 +291,14 @@ Next, we'll make the play/pause/stop button update when the end of the recording
 2. Add the `audioPlayerDidFinishPlaying: successfully:` method.
 3. Update the `startPlaying` method to set the delegate.
 
+## 12-EventKit
 
+We'll now make the application notice when you're creating a note during an event that's on your calendar. If you create a note during an event, or within 15 minutes of it starting and ending, the default note text will read "Note created during (event name)".
 
+1. Open DYNoteListViewController and modify the addNote: method to remove the line of code that sets the note's text.
+2. Open DYNoteStorage.m.
+3. `@import EventKit`.
+4. Add a new `nonatomic` property to DYNoteStorage: an EKEventStore named EventStore.
+5. Implement the `eventStore` method (which is a lazy getter for the property.)
+6. Update the `createNote` method to request calendar access.
+7. Implement the `prepareNoteWithCalendarEvent:` method, which queries the calendar and finds events to use.

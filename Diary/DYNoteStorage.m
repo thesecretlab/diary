@@ -8,6 +8,9 @@
 
 #import "DYNoteStorage.h"
 
+// Import EventKit so that we can get access to calendar information.
+@import EventKit;
+
 // This variable stores the single, shared instance of this class.
 static DYNoteStorage* _sharedStorage;
 
@@ -25,6 +28,9 @@ static DYNoteStorage* _sharedStorage;
 // The managed object context is the 'bag' in which all objects exist.
 @property (nonatomic) NSManagedObjectContext* managedObjectContext;
 
+// The event store gives us access to the calendar information.
+@property (nonatomic) EKEventStore* eventStore;
+
 @end
 
 @implementation DYNoteStorage {
@@ -41,6 +47,16 @@ static DYNoteStorage* _sharedStorage;
     });
     
     return _sharedStorage;
+}
+
+// Returns the event store.
+- (EKEventStore*) eventStore {
+    if (_eventStore != nil)
+        return _eventStore;
+    
+    _eventStore = [[EKEventStore alloc] init];
+    
+    return _eventStore;
 }
 
 // Returns the location of the folder where the app can store documents.
@@ -117,6 +133,21 @@ static DYNoteStorage* _sharedStorage;
     // Create the new note, and insert it into the managed object context.
     DYNote* newNote = [NSEntityDescription insertNewObjectForEntityForName:@"Note" inManagedObjectContext:self.managedObjectContext];
     
+    // Note text defaults to "New note"
+    newNote.text = @"New note";
+    
+    // Query the calendar, and try to find out if we're creating this note during an event.
+    // First, ensure that we have access to the calendar.
+    [self.eventStore requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
+        if (granted) {
+            // If we have permission, find an appropriate event and prepare the note using that.
+            [self prepareNoteWithCalendarEvent:newNote];
+        } else {
+            // We don't have permission - leave the note as-is.
+        }
+        
+    }];
+    
     // Try to save the database, which ensures that the note is stored.
     NSError* error = nil;
     
@@ -129,6 +160,89 @@ static DYNoteStorage* _sharedStorage;
     
     // Return the new note.
     return newNote;
+}
+
+// Called by createNote, to try to find the event that the note is being created in.
+- (void) prepareNoteWithCalendarEvent:(DYNote*)note {
+
+    if ([EKEventStore authorizationStatusForEntityType:EKEntityTypeEvent] != EKAuthorizationStatusAuthorized) {
+        // We don't have permission to access the calendar. Give up.
+        return;
+    }
+    
+    // We're looking for events that started 6 hours ago, and end 6 hours from now.
+    // We'll use NSDateComponents to perform the calculation, because this kind of calculation is _tricky_.
+    
+    
+    // First, get the user's current calendar. (In Western countries, this will probably be Georgian, but could be different.)
+    NSCalendar* calendar = [NSCalendar currentCalendar];
+    
+    // Get the current time.
+    NSDate* now = [NSDate date];
+    
+    // Construct an NSDateComponent that represents "6 hours before".
+    NSDateComponents* startOffset = [[NSDateComponents alloc] init];
+    [startOffset setHour:-6];
+    
+    // Construct an NSDateComponent that represents "6 hours after".
+    NSDateComponents* endOffset = [[NSDateComponents alloc] init];
+    [endOffset setHour:6];
+    
+    // Get an NSDate that represents 6 hours before now by adding this offset to now.
+    NSDate* startDate = [calendar dateByAddingComponents:startOffset toDate:now options:0];
+    
+    // Get an NSDate that represents 6 hours from now by adding this offset to now.
+    NSDate* endDate = [calendar dateByAddingComponents:endOffset toDate:now options:0];
+    
+    // We now have dates that refer to 6 hours ago and 6 hours from now.    
+    // Create a predicate (aka a search query) that finds events within the range of startDate and endDate, on all calendars.
+    NSPredicate* predicate = [self.eventStore predicateForEventsWithStartDate:startDate endDate:endDate calendars:nil];
+    
+    // Find the events.
+    NSArray* events = [self.eventStore eventsMatchingPredicate:predicate];
+    
+    EKEvent* eventToUse = nil;
+    
+    for (EKEvent* event in events) {
+        // If we're in the middle of this event - that is, start time is before now, and end time is after now - then use this event.
+        
+        if ([event.startDate compare:now] == NSOrderedAscending && // startDate is before now
+            [event.endDate compare:now] == NSOrderedDescending) { // endDate is after now
+            
+            // The event is happening right now! We'll use it.
+            eventToUse = event;
+            
+            // Stop looking for events.
+            break;
+            
+        }
+    }
+    
+    // If we now have an event, grab info from it!
+    if (eventToUse) {
+        note.text = [NSString stringWithFormat:@"Note created during %@", eventToUse.title];
+    } else {
+        // We have no event, so just leave the note
+    }
+    
+    // Save the note's changes. This method might be run on a background thread, so to keep things safe, we'll save it
+    // on the main operation queue.
+    
+    // Get the main queue
+    NSOperationQueue* mainQueue = [NSOperationQueue mainQueue];
+    
+    // Schedule the save operation.
+    [mainQueue addOperationWithBlock:^{
+        NSError* error = nil;
+        
+        [note.managedObjectContext save:&error];
+        
+        if (error != nil) {
+            NSLog(@"Failed to save the note: %@", error);
+        }
+    }];
+    
+
 }
 
 // Deletes a note from the database.
