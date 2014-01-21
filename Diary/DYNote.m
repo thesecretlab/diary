@@ -27,6 +27,10 @@
 @dynamic location;
 @dynamic audioNote;
 
+// The 'reminderDate' property is dynamic not because it's stored in the database, but rather
+// because we'll be setting local notifications instead.
+@dynamic reminderDate;
+
 - (void)awakeFromInsert {
     // Because these properties are readwrite, they can be assigned to.
         
@@ -61,5 +65,69 @@
     return [words count];
 }
 
+/// Finds the notification associated with this note, if any exists.
+- (UILocalNotification*) localNotification {
+    
+    // Notes are associated with notifications using the note's URL.
+    NSString* urlRepresentation = [[self.objectID URIRepresentation] absoluteString];
+    
+    // Go through all currently-scheduled notifications
+    for (UILocalNotification* notification in [UIApplication sharedApplication].scheduledLocalNotifications) {
+        
+        // Get the note URL from this notification
+        NSURL* notificationNote = notification.userInfo[@"note"];
+        
+        // If it's the same as this note's URL, then we've found the notification associated with this note
+        if ([notificationNote isEqual:urlRepresentation])
+            return notification;
+    }
+    
+    // We didn't find it; return nil.
+    return nil;
+}
+
+/// Schedules a reminder to go off at reminderDate; cancels any existing reminders.
+- (void)setReminderDate:(NSDate *)reminderDate {
+    
+    // Get the existing notification, if any, and cancel it
+    UILocalNotification* existingNotification = [self localNotification];
+    
+    if (existingNotification) {
+        [[UIApplication sharedApplication] cancelLocalNotification:existingNotification];
+    }
+    
+    // If the date is set to nil, don't schedule a new notification
+    if (reminderDate == nil)
+        return;
+    
+    // Create a new notification
+    UILocalNotification* newNotification = [[UILocalNotification alloc] init];
+    
+    // Set the time when it's going to go off
+    newNotification.fireDate = reminderDate;
+    
+    // Setting the timezone means that if the user changes time zones, the notification's fire date will be updated.
+    // If you don't do this, the fire date is considered to be in GMT and won't update when the user changes time zones.
+    newNotification.timeZone = [NSTimeZone defaultTimeZone];
+    
+    // When the alert fires, show the text of this note.
+    newNotification.alertBody = self.text;
+    
+    // Associate the notification with this object's identifier.
+    newNotification.userInfo = @{@"note": [[self.objectID URIRepresentation] absoluteString]};
+    
+    // Schedule the notification.
+    [[UIApplication sharedApplication] scheduleLocalNotification:newNotification];
+    
+}
+
+// Returns the date of the associated reminder, if any exists.
+- (NSDate *)reminderDate {
+    
+    // Get the notification, and return its fire date.
+    UILocalNotification* notification = [self localNotification];
+    
+    return notification.fireDate;
+}
 
 @end

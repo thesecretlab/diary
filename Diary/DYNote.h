@@ -30,6 +30,9 @@
 /// The audio note attached, stored as an NSData.
 @property (nonatomic, strong) NSData* audioNote;
 
+/// The date at which a reminder will appear.
+@property (nonatomic) NSDate* reminderDate;
+
 /// Returns the number of words in the note.
 - (int) wordCount;
 

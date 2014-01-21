@@ -337,3 +337,12 @@ Next, we'll make the note view controller pass the DYNote to the DYReminderViewC
 1. Open DYNoteViewController.m
 2. Import DYReminderViewController.
 3. Update `prepareForSegue:` to pass the note when the `showReminder` segue is happening.
+
+Next, we'll add support for setting reminders.
+
+1. Open DYNote.h.
+2. Add a nonatomic `NSDate` property called `reminderDate`.
+3. Open DYNote.m.
+4. Declare the `reminderDate` property as `@dynamic`.
+5. Implement the `localNotification`, `setReminderDate:` and `reminderDate` methods.
+
