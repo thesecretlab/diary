@@ -302,3 +302,9 @@ We'll now make the application notice when you're creating a note during an even
 5. Implement the `eventStore` method (which is a lazy getter for the property.)
 6. Update the `createNote` method to request calendar access.
 7. Implement the `prepareNoteWithCalendarEvent:` method, which queries the calendar and finds events to use.
+
+## 13-LocalNotifications
+
+We'll make it so that you can set a time for reminding you of a note.
+
+1. Create a new subclass of UIViewController, called DYReminderViewController.

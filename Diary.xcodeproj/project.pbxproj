@@ -29,6 +29,7 @@
 		68D609E71876D26B00BF5C4E /* DYNoteListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D609E61876D26B00BF5C4E /* DYNoteListViewController.m */; };
 		68D609EA187A939300BF5C4E /* DYNoteStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D609E9187A939300BF5C4E /* DYNoteStorage.m */; };
 		68D60A7B187AA6D700BF5C4E /* Diary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 68D60A79187AA6D700BF5C4E /* Diary.xcdatamodeld */; };
+		68FD6302188E8777004826C6 /* DYReminderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68FD6301188E8777004826C6 /* DYReminderViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,8 @@
 		68D609E8187A939300BF5C4E /* DYNoteStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYNoteStorage.h; sourceTree = "<group>"; };
 		68D609E9187A939300BF5C4E /* DYNoteStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYNoteStorage.m; sourceTree = "<group>"; };
 		68D60A7A187AA6D700BF5C4E /* Diary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Diary.xcdatamodel; sourceTree = "<group>"; };
+		68FD6300188E8777004826C6 /* DYReminderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYReminderViewController.h; sourceTree = "<group>"; };
+		68FD6301188E8777004826C6 /* DYReminderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYReminderViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +158,8 @@
 				68B4DCB5187D5D65006E8C29 /* DYLocationViewController.m */,
 				68B4DCB8187EBD60006E8C29 /* DYAudioViewController.h */,
 				68B4DCB9187EBD60006E8C29 /* DYAudioViewController.m */,
+				68FD6300188E8777004826C6 /* DYReminderViewController.h */,
+				68FD6301188E8777004826C6 /* DYReminderViewController.m */,
 			);
 			path = Diary;
 			sourceTree = "<group>";
@@ -287,6 +292,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				68D609E71876D26B00BF5C4E /* DYNoteListViewController.m in Sources */,
+				68FD6302188E8777004826C6 /* DYReminderViewController.m in Sources */,
 				68D609BA1876C1D400BF5C4E /* main.m in Sources */,
 				68B4DCB6187D5D65006E8C29 /* DYLocationViewController.m in Sources */,
 				68D609EA187A939300BF5C4E /* DYNoteStorage.m in Sources */,
