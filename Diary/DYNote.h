@@ -8,7 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DYNote : NSObject
+@import CoreData;
+
+// By making the object an NSManagedObject, it will know how to exist in a database.
+@interface DYNote : NSManagedObject
 
 /// The text stored in the note.
 // 'nonatomic' means that the setter isn't guaranteed to be thread-safe.
