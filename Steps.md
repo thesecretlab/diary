@@ -346,3 +346,13 @@ Next, we'll add support for setting reminders.
 4. Declare the `reminderDate` property as `@dynamic`.
 5. Implement the `localNotification`, `setReminderDate:` and `reminderDate` methods.
 
+Finally, we'll write the code that gets and sets the reminder date. 
+
+The way that this works is as follows: 
+
+* when the view appears, if the note has a reminder, turn on the switch, update the date picker to use the reminder date, and make the date picker available. If it has no reminder, turn off the switch and disable the date picker. 
+* When the switch is turned on or off, enable or disable the date picker.
+* When the view is exited, if the switch is on, set the reminder date. Otherwise, clear the reminder date entirely (removing the notification.)
+
+1. Add the `updateInterface` and `viewWillDisappear:` methods
+2. Update the `viewDidLoad` and `reminderSwitchChanged:` methods.
