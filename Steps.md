@@ -308,3 +308,11 @@ We'll now make the application notice when you're creating a note during an even
 We'll make it so that you can set a time for reminding you of a note.
 
 1. Create a new subclass of UIViewController, called DYReminderViewController.
+2. Open the Storyboard.
+3. Go to the Note View Controller.
+4. Drag in a Flexible Space into the toolbar at the bottom.
+5. Drag in a Bar Button item, labelled "Reminder". Arrange everything so it goes Location - Reminder - Audio.
+6. Drag in a new view controller.
+7. Set its class to `DYReminderViewController`.
+8. Create a segue from the Reminder button to the new view controller. Set the segue's identifier to 'showReminder'.
+9. Set the title of the view controller's navigation bar to 'Reminder'.

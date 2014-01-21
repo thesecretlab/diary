@@ -34,6 +34,12 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="AVY-q6-pPj"/>
+                                    <barButtonItem title="Reminder" id="83g-cc-VOB">
+                                        <connections>
+                                            <segue destination="ALb-xS-n6D" kind="push" identifier="showReminder" id="Ulv-NQ-5HK"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="mIT-Zh-TVm"/>
                                     <barButtonItem title="Audio" id="ShW-Zj-LUC">
                                         <connections>
                                             <segue destination="Lam-5e-Z87" kind="push" identifier="showAudio" id="AYT-BT-C8I"/>
@@ -52,6 +58,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="965" y="-577"/>
+        </scene>
+        <!--Reminder View Controller - Reminder-->
+        <scene sceneID="e9b-qM-uSE">
+            <objects>
+                <viewController id="ALb-xS-n6D" customClass="DYReminderViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GX6-fS-Uzd"/>
+                        <viewControllerLayoutGuide type="bottom" id="zoO-Fs-ago"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dTj-mg-8mf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Reminder" id="J8x-jU-Me3"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ls7-5y-UJ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1486" y="379"/>
         </scene>
         <!--Audio View Controller - Audio-->
         <scene sceneID="UH1-Hx-tEx">
