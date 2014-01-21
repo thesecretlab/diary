@@ -9,6 +9,7 @@
 #import "DYNoteViewController.h"
 #import "DYLocationViewController.h"
 #import "DYAudioViewController.h"
+#import "DYReminderViewController.h"
 
 @interface DYNoteViewController ()
 
@@ -76,6 +77,15 @@
         
         // Give it the note.
         audioViewController.note = self.note;
+    }
+    
+    if ([segue.identifier isEqualToString:@"showReminder"]) {
+        
+        // If this is the showReminder segue, we're moving to a DYReminderViewController.
+        DYReminderViewController* reminderViewController = segue.destinationViewController;
+        
+        // Give it the note.
+        reminderViewController.note = self.note;
     }
 }
 

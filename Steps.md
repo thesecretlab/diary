@@ -331,3 +331,9 @@ Next, we'll connect the interface to code.
 4. Switch to DYReminderViewController.m.
 5. Connect the switch to an outlet called `reminderSwitch`, **and** to an action called `reminderSwitchChanged`.
 6. Connect the date picker to an outlet called `datePicker`.
+
+Next, we'll make the note view controller pass the DYNote to the DYReminderViewController.
+
+1. Open DYNoteViewController.m
+2. Import DYReminderViewController.
+3. Update `prepareForSegue:` to pass the note when the `showReminder` segue is happening.
