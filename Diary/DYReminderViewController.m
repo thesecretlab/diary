@@ -9,6 +9,8 @@
 #import "DYReminderViewController.h"
 
 @interface DYReminderViewController ()
+@property (weak, nonatomic) IBOutlet UISwitch *reminderSwitch;
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
 
 @end
 
@@ -33,6 +35,9 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)reminderSwitchChanged:(id)sender {
 }
 
 @end

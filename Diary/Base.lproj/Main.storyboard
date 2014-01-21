@@ -102,6 +102,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nyk-2A-uKF">
                                 <rect key="frame" x="251" y="164" width="51" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="reminderSwitchChanged:" destination="ALb-xS-n6D" eventType="valueChanged" id="FSd-2C-Hyu"/>
+                                </connections>
                             </switch>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Show reminder" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Uh-sr-Cnu">
                                 <rect key="frame" x="20" y="169" width="223" height="21"/>
@@ -114,6 +117,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Reminder" id="J8x-jU-Me3"/>
+                    <connections>
+                        <outlet property="datePicker" destination="CEc-YD-2XU" id="EwZ-QG-p6k"/>
+                        <outlet property="reminderSwitch" destination="Nyk-2A-uKF" id="zF5-lw-9AO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ls7-5y-UJ2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -323,4 +323,11 @@ Now, we'll set up the interface.
 2. Drag in a Switch. Put it above the Date Picker, and to the right.
 3. Drag in a Label. Set the text to "Show reminder". Align it with the Switch.
 
+Next, we'll connect the interface to code.
 
+1. Open DYReminderViewController.h in the assistant.
+2. `#import` DYNote.h.
+3. Add a `DYNote` property called `note`.
+4. Switch to DYReminderViewController.m.
+5. Connect the switch to an outlet called `reminderSwitch`, **and** to an action called `reminderSwitchChanged`.
+6. Connect the date picker to an outlet called `datePicker`.
