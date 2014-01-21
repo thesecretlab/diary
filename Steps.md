@@ -316,3 +316,11 @@ We'll make it so that you can set a time for reminding you of a note.
 7. Set its class to `DYReminderViewController`.
 8. Create a segue from the Reminder button to the new view controller. Set the segue's identifier to 'showReminder'.
 9. Set the title of the view controller's navigation bar to 'Reminder'.
+
+Now, we'll set up the interface.
+
+1. Drag in a Date Picker. Put it right in the middle of the Reminders screen.
+2. Drag in a Switch. Put it above the Date Picker, and to the right.
+3. Drag in a Label. Set the text to "Show reminder". Align it with the Switch.
+
+
