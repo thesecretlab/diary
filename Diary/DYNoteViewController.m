@@ -89,4 +89,17 @@
     }
 }
 
+// Called when the user taps on the text view.
+- (IBAction)textViewTapped:(id)sender {
+    
+    // If the text view is currently the first responder (i.e. owns the keyboard),
+    // make it resign the keyboard.
+    if ([self.noteTextView isFirstResponder])
+        [self.noteTextView resignFirstResponder];
+    
+    // Otherwise, make it _become_ the first responder.
+    else
+        [self.noteTextView becomeFirstResponder];
+}
+
 @end

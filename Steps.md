@@ -356,3 +356,13 @@ The way that this works is as follows:
 
 1. Add the `updateInterface` and `viewWillDisappear:` methods
 2. Update the `viewDidLoad` and `reminderSwitchChanged:` methods.
+
+##14-NicerTextView
+
+Currently, the text view never dismisses the keyboard. We're going to make it so that tapping the text view dismisses the keyboard, when it's up.
+
+1. Open the storyboard.
+2. Drag a Tap Gesture Recognizer onto the text view.
+3. Connect the gesture recognizer to a new method, called textViewTapped.
+4. Implement the `textViewTapped:` method.
+
