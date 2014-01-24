@@ -366,3 +366,9 @@ Currently, the text view never dismisses the keyboard. We're going to make it so
 3. Connect the gesture recognizer to a new method, called textViewTapped.
 4. Implement the `textViewTapped:` method.
 
+Now, we'll make it so that the text field adjusts its size to account for the keyboard. Additionally, because the text field is under the toolbar, we also want to take into account the toolbar's size.
+
+1. Open the storyboard.
+2. Connect the toolbar to a new outlet called 'toolbar'.
+3. Implement the `updateTextInsetWithBottomHeight:`, `keyboardWillShow:` and `keyboardWillHide:` methods.
+4. Update the `viewDidLoad`, `viewWillAppear` and `viewWillDisappear` methods.

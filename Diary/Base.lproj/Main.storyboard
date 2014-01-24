@@ -57,6 +57,7 @@
                     <navigationItem key="navigationItem" title="Note" id="lzV-Rh-FOG"/>
                     <connections>
                         <outlet property="noteTextView" destination="e14-II-HsQ" id="KPR-PV-5h5"/>
+                        <outlet property="toolbar" destination="KzC-bx-J8R" id="kMr-FV-d84"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
