@@ -130,3 +130,14 @@ We'll now make the table view searchable.
 1. Open the storyboard.
 2. Drag in a Search Bar and Search Display Controller. When you start dragging, you'll see a search bar; drag it so that it's above the table view.
 
+Next, we'll make the view controller able to work with the search controller.
+
+1. Open DYNoteListViewController.m 
+2. Make DYNoteListViewController conform to `UISearchBarDelegate` and `UISearchDisplayDelegate`.
+3. Add a new strong `NSFetchedResultsController` property called `searchFetchedResultsController`.
+
+Next, we'll update the table view and fetched results controller delegate methods to work with the search results table.
+
+1. Update the `numberOfSectionsInTableView:`, `tableView:numberOfRowsInSection:`, `configureCell:atIndexPath:`, `prepareForSegue:sender:`, `controllerWillChangeContent:`, `controllerDidChangeContent:`,  and `controller:didChangeObject:atIndexPath:forChangeType:newIndexPath:` methods.
+
+2. Implement the `searchDisplayControllerWillBeginSearch:`, `searchDisplayControllerWillEndSearch:`, `searchBar:textDidChange:` and `updateSearchQuery:` methods.

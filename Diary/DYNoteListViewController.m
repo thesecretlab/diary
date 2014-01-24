@@ -18,11 +18,14 @@
 // By adding <NSFetchedResultsControllerDelegate> after the parentheses,
 // we're telling the compiler that this object can work as a delegate for
 // an NSFetchedResultsController.
-@interface DYNoteListViewController () <NSFetchedResultsControllerDelegate> {
+@interface DYNoteListViewController () <NSFetchedResultsControllerDelegate, UISearchBarDelegate, UISearchDisplayDelegate> {
 }
 
 // The fetched results controller is the way we get info about the notes in the database.
 @property (strong) NSFetchedResultsController* fetchedResultsController;
+
+// The search fetched results controller is the way we get search results from the database
+@property (strong) NSFetchedResultsController* searchFetchedResultsController;
 
 @end
 
@@ -54,7 +57,11 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
     // Ask the fetched results controller to tell us how many sections there are.
-    return [[self.fetchedResultsController sections] count];
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        return [[self.searchFetchedResultsController sections] count];
+    } else {
+        return [[self.fetchedResultsController sections] count];
+    }
 }
 
 
@@ -62,17 +69,22 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     // Ask the fetched results controller to tell us about how many rows are in the section.
-    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
-    return [sectionInfo numberOfObjects];
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        id <NSFetchedResultsSectionInfo> sectionInfo = [self.searchFetchedResultsController sections][section];
+        return [sectionInfo numberOfObjects];
+    } else {
+        id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
+        return [sectionInfo numberOfObjects];
+    }
 }
 
 // Returns a table view cell for use, which shows the data we want to display.
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     // Get a cell to use.
-    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"NoteCell"];
+    UITableViewCell* cell = [self.tableView dequeueReusableCellWithIdentifier:@"NoteCell"];
     
-    [self configureCell:cell atIndexPath:indexPath];
+    [self configureCell:cell atIndexPath:indexPath inTableView:tableView];
     
     // Return the cell to the table view, which will then show it.
     return cell;
@@ -81,10 +93,16 @@
 
 // Called by either tableView:cellForRowAtIndexPath: or by
 // controller:didChangeObject:atIndexPath:forChangeType:newIndexPath:.
-- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath inTableView:(UITableView*) tableView {
     
     // Work out which note should be shown in this cell.
-    DYNote* note = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
+    DYNote* note = nil;
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        note = [self.searchFetchedResultsController objectAtIndexPath:indexPath];
+    } else {
+        note = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    }
     
     // Give the note's text to the cell.
     cell.textLabel.text = note.text;
@@ -103,10 +121,17 @@
         UITableViewCell* cell = sender;
         
         // Work out which row this cell was.
-        NSIndexPath* indexPath = [self.tableView indexPathForCell:cell];
+        NSIndexPath* indexPath = nil;
         
-        // Use that to get the appropriate note.
-        DYNote* note = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        DYNote* note = nil;
+        
+        if (self.searchDisplayController.active) {
+            indexPath = [self.searchDisplayController.searchResultsTableView indexPathForCell:cell];
+            note = [self.searchFetchedResultsController objectAtIndexPath:indexPath];
+        } else {
+            indexPath = [self.tableView indexPathForCell:cell];
+            note = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        }
         
         noteViewController.note = note;
     }
@@ -131,7 +156,13 @@
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
     
     // Tell the table view to prepare to group together a bunch of animations.
-    [self.tableView beginUpdates];
+    
+    if (controller == self.searchFetchedResultsController) {
+        [self.searchDisplayController.searchResultsTableView beginUpdates];
+    } else {
+        [self.tableView beginUpdates];
+    }
+    
 }
 
 // Called when the fetched results controller has finished reporting changes.
@@ -139,33 +170,47 @@
     
     // Tell the table view that we're done doing updates, so it can perform the animations
     // that have been queued up.
-    [self.tableView endUpdates];
+    
+    if (controller == self.searchFetchedResultsController) {
+        [self.searchDisplayController.searchResultsTableView endUpdates];
+    } else {
+        [self.tableView endUpdates];
+    }
+    
+    
 }
 
 // Called when the fetched results controller has a change to report.
 - (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
     
+    UITableView* tableView = nil;
+    if (controller == self.searchFetchedResultsController) {
+        tableView = self.searchDisplayController.searchResultsTableView;
+    } else {
+        tableView = self.tableView;
+    }
+    
     // Different changes need different animations:
     switch (type) {
         case NSFetchedResultsChangeInsert:
             // A new object was inserted, so tell the table view to animate a new cell in.
-            [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationTop];
+            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationTop];
             break;
             
         case NSFetchedResultsChangeDelete:
             // An object was deleted, so tell the table view to delete the appropriate row.
-            [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
             break;
             
         case NSFetchedResultsChangeUpdate:
             // An object was changed, so update its contents by calling configureCell:atIndexPath.
-            [self configureCell:[self.tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath inTableView:tableView];
             break;
             
         case NSFetchedResultsChangeMove:
             // An object was move, so delete the row that it used to be in, and insert one where it's now located.
-            [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
     }
     
@@ -177,6 +222,53 @@
     // Tell the DYNoteStorage to create a new note.
     DYNote* newNote = [[DYNoteStorage sharedStorage] createNote];
     newNote.text = @"New Note";
+    
+}
+
+// Called when search begins (when the user taps in the search box)
+- (void)searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller {
+    self.searchFetchedResultsController = [[DYNoteStorage sharedStorage] createFetchedResultsController];
+    self.searchFetchedResultsController.delegate = self;
+    
+    [self updateSearchQuery:self.searchDisplayController.searchBar.text];
+}
+
+// Called when search ends (when the user taps the 'Cancel' button)
+- (void)searchDisplayControllerWillEndSearch:(UISearchDisplayController *)controller {
+    self.searchFetchedResultsController = nil;
+}
+
+// Called when the search text changes.
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText {
+    [self updateSearchQuery:searchText];
+}
+
+// Called by searchBar:textDidChange: and searchDisplayControllerWillBeginSearch: to update
+// the search request.
+- (void) updateSearchQuery:(NSString*)searchQuery {
+    
+    // Get the existing fetch request.
+    NSFetchRequest* fetchRequest = self.searchFetchedResultsController.fetchRequest;
+    
+    if ([searchQuery length] > 0) {
+        
+        // If the search text is not empty, create a predicate (aka a search query) that
+        // does a case-insensitive search for the searchQuery text in the 'text' attribute.
+        NSPredicate* predicate = [NSPredicate predicateWithFormat:@"text contains[c] %@", searchQuery];
+        
+        // Give the new predicate to the fetch request.
+        fetchRequest.predicate = predicate;
+    }
+    
+    // Now that the fetch request is updated, make the fetched results controller
+    // use the new fetch request. (This will cause the search results to update.)
+    NSError* error = nil;
+    
+    [self.searchFetchedResultsController performFetch:&error];
+    
+    if (error != nil) {
+        NSLog(@"Error fetching search results: %@", error);
+    }
     
 }
 
