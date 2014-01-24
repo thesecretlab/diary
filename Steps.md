@@ -124,3 +124,9 @@ Next, we'll add a + button to the top-right - when tapped, it'll add a new note.
 4. Set the Class of the entity to `DYNote`.
 5. Update DYNote.h and DYNote.m to reflect the latest changes. Basically, almost all of the code in these files are changed.
 6. Update DYNoteListViewController.m to use DYNoteStorage.
+
+We'll now make the table view searchable.
+
+1. Open the storyboard.
+2. Drag in a Search Bar and Search Display Controller. When you start dragging, you'll see a search bar; drag it so that it's above the table view.
+
