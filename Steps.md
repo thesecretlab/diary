@@ -439,3 +439,21 @@ Next, we'll create the storyboard for the iPad.
 2. Go to the Info tab, and ensure that the "Main storyboard file base name (iPad)" is set. If "Main nib file base name (iPad)" is set instead, change it to "storyboard". Weird Xcode bug, I guess?
 2. Open the new storyboard.
 
+The iPad app will work in a different way to the iPhone one. Whereas the iPhone version created a brand-new DYNoteViewController when the list is tapped, the iPad version will only ever have one. When a note is tapped, the text in the Note View Controller is replaced.
+
+3. Drag in a Split View Controller.
+4. Select the table view. Change its class to DYNoteListViewController.
+5. Select the prototype cell, and change its identifier to "NoteCell". Change its style to Basic.
+
+Weirdly, you can't drag a bar button item directly into the navigation bar. Instead, you need do it in a roundabout way.
+
+1. Drag a Bar Button Item into the Note List View controller, *in the outline view*. Put it just under the First Responder item.
+2. Make it use the Add identifier, and control-drag from it to the View Controller to connect it to the addItem: method.
+3. Select the Navigation Item. Go to the Connections inspector. Connect the Right Bar Button Item outlet to the Bar Button Item.
+4. Select the Navigation Item, and set the Title to 'Notes'. (Double-clicking the title won't work.)
+
+When you launch the app, you can create new notes, and delete them. Next up: connecting tapping the notes to showing them.
+
+
+
+
