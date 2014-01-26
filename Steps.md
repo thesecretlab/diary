@@ -402,3 +402,10 @@ Next, we'll set up the interface of this new view controller.
 5. Select both labels, and position them so that they're centered in the screen.
 6. Drag in an Image View. Make it fill the screen. Change its mode to Aspect Fit. Make sure that the image is above the labels (check the Outline pane to be sure.)
 
+Next, we'll make the photo view controller able to receive a note; we'll also make the photo view controller pass the note to the photo view controller.
+
+1. Open DYPhotoViewController.h. 
+2. Import DYNote.h.
+3. Add a new `strong` property: a `DYNote` called `note`.
+4. Open DYNoteViewController. Import DYPhotoViewController.h.
+5. Modify 

@@ -10,6 +10,7 @@
 #import "DYLocationViewController.h"
 #import "DYAudioViewController.h"
 #import "DYReminderViewController.h"
+#import "DYPhotoViewController.h"
 
 @interface DYNoteViewController ()
 
@@ -99,6 +100,15 @@
         
         // Give it the note.
         reminderViewController.note = self.note;
+    }
+    
+    if ([segue.identifier isEqualToString:@"showPhoto"]) {
+        
+        // If this is the showPhoto segue, we're moving to a DYPhotoViewController.
+        DYPhotoViewController* photoViewController = segue.destinationViewController;
+        
+        // Give it the note.
+        photoViewController.note = self.note;
     }
 }
 
