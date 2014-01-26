@@ -30,6 +30,7 @@
 		68D609E71876D26B00BF5C4E /* DYNoteListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D609E61876D26B00BF5C4E /* DYNoteListViewController.m */; };
 		68D609EA187A939300BF5C4E /* DYNoteStorage.m in Sources */ = {isa = PBXBuildFile; fileRef = 68D609E9187A939300BF5C4E /* DYNoteStorage.m */; };
 		68D60A7B187AA6D700BF5C4E /* Diary.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 68D60A79187AA6D700BF5C4E /* Diary.xcdatamodeld */; };
+		68E505C1189517FE00987518 /* Main-iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68E505C0189517FE00987518 /* Main-iPad.storyboard */; };
 		68FD6302188E8777004826C6 /* DYReminderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68FD6301188E8777004826C6 /* DYReminderViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +79,7 @@
 		68D609E8187A939300BF5C4E /* DYNoteStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYNoteStorage.h; sourceTree = "<group>"; };
 		68D609E9187A939300BF5C4E /* DYNoteStorage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYNoteStorage.m; sourceTree = "<group>"; };
 		68D60A7A187AA6D700BF5C4E /* Diary.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Diary.xcdatamodel; sourceTree = "<group>"; };
+		68E505C0189517FE00987518 /* Main-iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Main-iPad.storyboard"; sourceTree = "<group>"; };
 		68FD6300188E8777004826C6 /* DYReminderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYReminderViewController.h; sourceTree = "<group>"; };
 		68FD6301188E8777004826C6 /* DYReminderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYReminderViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -145,6 +147,7 @@
 			children = (
 				68D609BC1876C1D400BF5C4E /* DYAppDelegate.h */,
 				68D609BD1876C1D400BF5C4E /* DYAppDelegate.m */,
+				68E505C0189517FE00987518 /* Main-iPad.storyboard */,
 				68D609BF1876C1D400BF5C4E /* Main.storyboard */,
 				68D609C21876C1D400BF5C4E /* DYNoteViewController.h */,
 				68D609C31876C1D400BF5C4E /* DYNoteViewController.m */,
@@ -278,6 +281,7 @@
 				68D609C61876C1D400BF5C4E /* Images.xcassets in Resources */,
 				68D609B81876C1D400BF5C4E /* InfoPlist.strings in Resources */,
 				68D609C11876C1D400BF5C4E /* Main.storyboard in Resources */,
+				68E505C1189517FE00987518 /* Main-iPad.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,7 +442,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Diary/Diary-Prefix.pch";
 				INFOPLIST_FILE = "Diary/Diary-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -451,7 +457,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Diary/Diary-Prefix.pch";
 				INFOPLIST_FILE = "Diary/Diary-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

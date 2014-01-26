@@ -421,3 +421,21 @@ Next, we'll implement the code.
 
 1. Make DYPhotoViewController conform to `UINavigationControllerDelegate` and `UIImagePickerControllerDelegate`.
 2. Update the `viewDidLoad` method, and implement the `takePhoto:`, `deletePhoto:`, `imagePickerController:didFinishPickingMediaWithInfo:` and `imagePickerControllerDidCancel:` methods.
+
+##16-iPad
+
+We'll now port this entire app to the iPad.
+
+1. Open the Project (select it at the top of the Project Navigator.)
+2. Change Devices from iPhone to Universal. Xcode will ask if you want to copy the Storyboard file. Click Don't Copy.
+
+    (Despite it promising to copy the file, clicking 'Copy' will actually just create a group called iPad.)
+
+3. Still on the same page, switch from iPhone to iPad. Change the Main Interface from 'Main' to 'Main-iPad'.
+
+Next, we'll create the storyboard for the iPad.
+
+1. Create a new Storyboard file. (You'll find storyboards in the User Interface category.) Set the Device Family to iPad. Name it 'Main-iPad'.
+2. Go to the Info tab, and ensure that the "Main storyboard file base name (iPad)" is set. If "Main nib file base name (iPad)" is set instead, change it to "storyboard". Weird Xcode bug, I guess?
+2. Open the new storyboard.
+
