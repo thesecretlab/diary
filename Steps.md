@@ -409,3 +409,10 @@ Next, we'll make the photo view controller able to receive a note; we'll also ma
 3. Add a new `strong` property: a `DYNote` called `note`.
 4. Open DYNoteViewController. Import DYPhotoViewController.h.
 5. Modify 
+
+Next, we'll connect up the interface to the code.
+
+1. Open the storyboard, and go to the Photo View Controller. Open DYPhotoViewController.m in the Assistant.
+2. Connect the image view to a new outlet called `imageView`.
+3. Connect the Take Photo button to a new action called `takePhoto`.
+4. Connect the Trash button to a new action called `deletePhoto`.

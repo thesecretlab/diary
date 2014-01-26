@@ -218,15 +218,26 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="bwi-l3-x02"/>
-                                    <barButtonItem title="Take Photo" id="tNP-sB-Z6J"/>
+                                    <barButtonItem title="Take Photo" id="tNP-sB-Z6J">
+                                        <connections>
+                                            <action selector="takePhoto:" destination="0Ir-TP-UAa" id="MHH-Sz-8Lj"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Photo" id="6Ge-cI-gCT">
-                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="1DR-38-vTE"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="1DR-38-vTE">
+                            <connections>
+                                <action selector="deletePhoto:" destination="0Ir-TP-UAa" id="ofc-Z1-WsY"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="imageView" destination="Mqe-Hg-Qr7" id="qDs-8U-YjL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cw8-Rm-8bd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
