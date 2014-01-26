@@ -416,3 +416,8 @@ Next, we'll connect up the interface to the code.
 2. Connect the image view to a new outlet called `imageView`.
 3. Connect the Take Photo button to a new action called `takePhoto`.
 4. Connect the Trash button to a new action called `deletePhoto`.
+
+Next, we'll implement the code.
+
+1. Make DYPhotoViewController conform to `UINavigationControllerDelegate` and `UIImagePickerControllerDelegate`.
+2. Update the `viewDidLoad` method, and implement the `takePhoto:`, `deletePhoto:`, `imagePickerController:didFinishPickingMediaWithInfo:` and `imagePickerControllerDidCancel:` methods.
