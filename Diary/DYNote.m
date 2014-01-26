@@ -26,6 +26,7 @@
 @dynamic modifiedDate;
 @dynamic location;
 @dynamic audioNote;
+@dynamic image;
 
 // The 'reminderDate' property is dynamic not because it's stored in the database, but rather
 // because we'll be setting local notifications instead.

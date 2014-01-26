@@ -372,3 +372,16 @@ Now, we'll make it so that the text field adjusts its size to account for the ke
 2. Connect the toolbar to a new outlet called 'toolbar'.
 3. Implement the `updateTextInsetWithBottomHeight:`, `keyboardWillShow:` and `keyboardWillHide:` methods.
 4. Update the `viewDidLoad`, `viewWillAppear` and `viewWillDisappear` methods.
+
+##15-Images
+
+We'll add the ability to take photos and put them in notes.
+
+First, we'll need to store the photo data in notes.
+
+1. Open Diary.xcdatamodeld.
+2. Add a new Attribute to the Note entity: a Binary Data called `image`.
+3. Open `DYNote.h`. Add a new `nonatomic` property: an `NSData` called `image`.
+4. Open `DYNote.m`. Declare the `image` property as `@dynamic`.
+
+
