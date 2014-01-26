@@ -393,3 +393,12 @@ Next, we'll set up the view controller that lets the user take, view and remove 
 5. Control-drag from the new Camera button to the new view controller, and create a new Push segue. Name the segue 'showPhoto'.
 6. Set the title of the new view controller to 'Photo'.
 
+Next, we'll set up the interface of this new view controller.
+
+1. Drag in a Bar Button Item, and put it at the top-right of the navigation bar. Set its Identifier to Trash.
+2. Drag in a Toolbar. Change the Title of the existing button to Take Photo. Drag a Flexible Space in and put it at the left hand side (so that the Take Photo button is placed at the right.)
+3. Drag in a Label. Change its title to 'No Photo'. Change its font to System Bold 24pt, and change its color to Light Grey (it's one of the system colors.)
+4. Drag in another Label. Change its title to "Tap Take Photo to take a new photo." Change its font to System 17pt, and change its color to Light Grey. Change the number of lines to 0, and resize it so that the text is on two lines of roughly equal length. Place it under the larger label.
+5. Select both labels, and position them so that they're centered in the screen.
+6. Drag in an Image View. Make it fill the screen. Change its mode to Aspect Fit. Make sure that the image is above the labels (check the Outline pane to be sure.)
+
