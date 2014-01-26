@@ -384,4 +384,12 @@ First, we'll need to store the photo data in notes.
 3. Open `DYNote.h`. Add a new `nonatomic` property: an `NSData` called `image`.
 4. Open `DYNote.m`. Declare the `image` property as `@dynamic`.
 
+Next, we'll set up the view controller that lets the user take, view and remove photos.
+
+1. Create a new `UIViewController` subclass called `DYPhotoViewController`.
+2. Open the storyboard. Go to the Note View Controller.
+3. Add a Bar Button Item to the top-right of the navigation bar. Set its identifier to Camera.
+4. Drag in a View Controller. Set its class to `DYPhotoViewController`.
+5. Control-drag from the new Camera button to the new view controller, and create a new Push segue. Name the segue 'showPhoto'.
+6. Set the title of the new view controller to 'Photo'.
 

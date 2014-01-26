@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6804C43F1894E4ED00A66B03 /* DYPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6804C43E1894E4ED00A66B03 /* DYPhotoViewController.m */; };
 		68B4DCB3187D5C1D006E8C29 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68B4DCB2187D5C1D006E8C29 /* CoreLocation.framework */; };
 		68B4DCB6187D5D65006E8C29 /* DYLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 68B4DCB5187D5D65006E8C29 /* DYLocationViewController.m */; };
 		68B4DCB7187D7050006E8C29 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68B4DCB0187D5C18006E8C29 /* MapKit.framework */; };
@@ -43,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6804C43D1894E4ED00A66B03 /* DYPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYPhotoViewController.h; sourceTree = "<group>"; };
+		6804C43E1894E4ED00A66B03 /* DYPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DYPhotoViewController.m; sourceTree = "<group>"; };
 		68B4DCB0187D5C18006E8C29 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		68B4DCB2187D5C1D006E8C29 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		68B4DCB4187D5D65006E8C29 /* DYLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DYLocationViewController.h; sourceTree = "<group>"; };
@@ -160,6 +163,8 @@
 				68B4DCB9187EBD60006E8C29 /* DYAudioViewController.m */,
 				68FD6300188E8777004826C6 /* DYReminderViewController.h */,
 				68FD6301188E8777004826C6 /* DYReminderViewController.m */,
+				6804C43D1894E4ED00A66B03 /* DYPhotoViewController.h */,
+				6804C43E1894E4ED00A66B03 /* DYPhotoViewController.m */,
 			);
 			path = Diary;
 			sourceTree = "<group>";
@@ -295,6 +300,7 @@
 				68FD6302188E8777004826C6 /* DYReminderViewController.m in Sources */,
 				68D609BA1876C1D400BF5C4E /* main.m in Sources */,
 				68B4DCB6187D5D65006E8C29 /* DYLocationViewController.m in Sources */,
+				6804C43F1894E4ED00A66B03 /* DYPhotoViewController.m in Sources */,
 				68D609EA187A939300BF5C4E /* DYNoteStorage.m in Sources */,
 				68D609C41876C1D400BF5C4E /* DYNoteViewController.m in Sources */,
 				68B4DCBA187EBD60006E8C29 /* DYAudioViewController.m in Sources */,
@@ -385,6 +391,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "715F2A5A-98DF-42AF-826D-6B540544F1F0";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -406,7 +413,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: SECRET LAB PTY. LTD.";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -417,6 +424,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				PROVISIONING_PROFILE = "715F2A5A-98DF-42AF-826D-6B540544F1F0";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

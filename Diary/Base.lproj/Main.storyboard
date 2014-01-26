@@ -54,7 +54,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Note" id="lzV-Rh-FOG"/>
+                    <navigationItem key="navigationItem" title="Note" id="lzV-Rh-FOG">
+                        <barButtonItem key="rightBarButtonItem" systemItem="camera" id="sYS-pq-cIJ">
+                            <connections>
+                                <segue destination="0Ir-TP-UAa" kind="push" identifier="showPhoto" id="MFO-Qh-XLh"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="noteTextView" destination="e14-II-HsQ" id="KPR-PV-5h5"/>
                         <outlet property="toolbar" destination="KzC-bx-J8R" id="kMr-FV-d84"/>
@@ -88,7 +94,7 @@
                                     <!--2014-01-21 10:53:15 +0000-->
                                 </date>
                                 <timeZone key="timeZone" name="America/Los_Angeles">
-                                    <mutableData key="data">
+                                    <data key="data">
 VFppZgAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAC5AAAABAAAABCepkign7sVkKCGKqChmveQ
 y4kaoNIj9HDSYSYQ1v50INiArZDa/tGg28CQENzes6DdqayQ3r6VoN+JjpDgnneg4WlwkOJ+WaDjSVKQ
 5F47oOUpNJDmR1gg5xJREOgnOiDo8jMQ6gccIOrSFRDr5v4g7LH3EO3G4CDukdkQ76/8oPBxuxDxj96g
@@ -106,7 +112,7 @@ f5gqkAABAAECAwEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
-</mutableData>
+</data>
                                 </timeZone>
                             </datePicker>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nyk-2A-uKF">
@@ -176,6 +182,25 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GrX-57-roO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1484" y="-298"/>
+        </scene>
+        <!--Photo View Controller-->
+        <scene sceneID="POP-7g-Hmx">
+            <objects>
+                <viewController id="0Ir-TP-UAa" customClass="DYPhotoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="M3P-cg-VV8"/>
+                        <viewControllerLayoutGuide type="bottom" id="Tz4-5y-C0K"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zQb-W6-pJf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="6Ge-cI-gCT"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cw8-Rm-8bd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="985" y="-1293"/>
         </scene>
         <!--Location View Controller - Location-->
         <scene sceneID="CNa-yI-EXY">
