@@ -528,3 +528,12 @@ Finally, we'll make it so that tapping the Trash button in the Location popover 
 1. Open DYLocationViewController.m.
 2. Update removeNote: to remove all annotations, stop the location manager, and set it to nil.
 
+##18-LaunchImages
+
+The last step is to provide launch images.
+
+1. Open the Images.xcassets file.
+2. Go to the LaunchImage image set. Go to the Attributes inspector, and turn on iPad Portrait and Landscape.
+3. Drag the appropriate files into the slots.
+
+Ship it.
