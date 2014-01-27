@@ -4,25 +4,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="O8t-kr-8PV">
-            <objects>
-                <viewController id="X2p-Pg-EKR" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Ct0-gj-dMi"/>
-                        <viewControllerLayoutGuide type="bottom" id="oW9-s0-NPa"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="mnB-2n-5Io">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <toolbarItems/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SZy-Ho-tBr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1200" y="511"/>
-        </scene>
         <!--Note List View Controller - Notes-->
         <scene sceneID="VR4-Gf-aNF">
             <objects>
@@ -71,6 +52,40 @@
             <point key="canvasLocation" x="1732" y="-425"/>
         </scene>
         <!--Navigation Controller-->
+        <scene sceneID="4vO-YU-CVq">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="Jko-sD-VEm" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3xY-qq-2FJ">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="zGP-Wu-Gmu" kind="relationship" relationship="rootViewController" id="oCR-SV-sHc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H11-6Q-kP0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1233" y="571"/>
+        </scene>
+        <!--Note View Controller-->
+        <scene sceneID="dEX-Fl-abg">
+            <objects>
+                <viewController id="zGP-Wu-Gmu" customClass="DYNoteViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Azn-ES-dxA"/>
+                        <viewControllerLayoutGuide type="bottom" id="aNQ-rd-Dye"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LOz-zi-NSF">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Yws-sc-qKc"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5OF-ho-GNV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2271" y="571"/>
+        </scene>
+        <!--Navigation Controller-->
         <scene sceneID="cqg-5k-Yro">
             <objects>
                 <navigationController id="Ole-pC-pEk" sceneMemberID="viewController">
@@ -92,7 +107,7 @@
                     <toolbarItems/>
                     <connections>
                         <segue destination="Ole-pC-pEk" kind="relationship" relationship="masterViewController" id="Mic-g8-V1c"/>
-                        <segue destination="X2p-Pg-EKR" kind="relationship" relationship="detailViewController" id="oPv-W8-BP1"/>
+                        <segue destination="Jko-sD-VEm" kind="relationship" relationship="detailViewController" id="Y54-xx-Qcv"/>
                     </connections>
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gj5-0e-LVx" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -454,6 +454,14 @@ Weirdly, you can't drag a bar button item directly into the navigation bar. Inst
 
 When you launch the app, you can create new notes, and delete them. Next up: connecting tapping the notes to showing them.
 
+In order to have a navigation bar that doesn't have an ugly gap above it on the iPad, you need to use a navigation controller. Therefore, the right-hand-side needs to have a navigation controller, inside of which is the note view controller. It's kind of an ugly hack.
+
+1. Delete the larger view controller.
+2. Drag in a Navigation Controller.
+3. Control-drag from the Split View Controller to the Navigation Controller, and make it the Detail View Controller.
+4. The navigation controller comes with a table view controller. Delete it.
+5. Drag in a View Controller. Make it the root view of the Navigation Controller.
+6. Select the new view controller, and set its class to DYNoteViewController.
 
 
 
