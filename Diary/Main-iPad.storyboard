@@ -123,16 +123,26 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Note Selected" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8yD-Q6-Fnf">
+                                <rect key="frame" x="287" y="498" width="195" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="centerX" secondItem="8yD-Q6-Fnf" secondAttribute="centerX" id="5wR-CG-xGH"/>
                             <constraint firstItem="GRm-ID-OyX" firstAttribute="leading" secondItem="LOz-zi-NSF" secondAttribute="leading" id="bkH-DK-aQm"/>
                             <constraint firstAttribute="trailing" secondItem="GRm-ID-OyX" secondAttribute="trailing" id="edA-HI-pN8"/>
                             <constraint firstItem="aNQ-rd-Dye" firstAttribute="top" secondItem="GRm-ID-OyX" secondAttribute="bottom" id="m7W-vi-udD"/>
+                            <constraint firstAttribute="centerY" secondItem="8yD-Q6-Fnf" secondAttribute="centerY" id="mXn-kV-WDu"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Yws-sc-qKc"/>
                     <connections>
+                        <outlet property="noNoteLabel" destination="8yD-Q6-Fnf" id="jYQ-Cu-GIg"/>
                         <outlet property="noteTextView" destination="0uK-kn-hyb" id="Gte-qI-oW2"/>
                         <outlet property="toolbar" destination="GRm-ID-OyX" id="0oN-cg-xoO"/>
                     </connections>

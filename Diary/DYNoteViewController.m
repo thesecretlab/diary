@@ -16,6 +16,7 @@
 
 @property (weak, nonatomic) IBOutlet UITextView *noteTextView;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
+@property (weak, nonatomic) IBOutlet UILabel *noNoteLabel;
 
 @end
 
@@ -31,6 +32,14 @@
     // note, the app will return to it.
     NSURL* noteURL = [self.note.objectID URIRepresentation];
     [[NSUserDefaults standardUserDefaults] setURL:noteURL forKey:@"current_note"];
+    
+    // When the view first appears, the keyboard is not up, so the toolbar will be the
+    // biggest thing covering the text view.
+    // So, make the text view adjust to the toolbar's height.
+    [self updateTextInsetWithBottomHeight:self.toolbar.frame.size.height];
+    
+    // When the view loads, we may not have a note to show. Update the interface in case we don't.
+    [self updateInterface];
     
 }
 
@@ -182,6 +191,28 @@
     // we're looking at a new note.
     NSURL* noteURL = [self.note.objectID URIRepresentation];
     [[NSUserDefaults standardUserDefaults] setURL:noteURL forKey:@"current_note"];
+    
+    // Update the interface so that the view is either enabled or
+    // disabled (depending on whether we have a note or not
+    [self updateInterface];
+}
+
+// Called by viewDidLoad and setNote: to update the interface depending on whether we have a note or not.
+- (void) updateInterface {
+    
+    // If we have no note, make the 'no note' label visible, disable the
+    // view so that no buttons can be tapped, and make everything grey.
+    if (self.note == nil) {
+        self.noNoteLabel.hidden = NO;
+        self.view.userInteractionEnabled = NO;
+        self.view.tintColor = [UIColor grayColor];
+    } else {
+        
+        // Otherwise, if we have a note, hide the 'no note' label, enable user interaction, and return the colours to normal.
+        self.noNoteLabel.hidden = YES;
+        self.view.userInteractionEnabled = YES;
+        self.view.tintColor = nil;
+    }
 }
 
 @end

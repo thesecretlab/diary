@@ -504,3 +504,17 @@ Next up, we'll start adding the additional features.
 5. Control-drag from the Camera button in the Note View Controller to the new Photo View Controller. Choose the Popover segue style. Name the segue 'showPhoto' (same as the iPhone version's.)
 6. Repeat the same process for the DYLocationViewController, the DYAudioNoteViewController and the DYReminderViewController. The names for the segues for each are `showLocation`, `showAudio` and `showReminder`.
 
+##17-iPadPolish
+
+There are a few remaining tweaks that we should add to the iPad version, before it's ready to ship:
+
+* If there's no note selected, disable the right hand view controller.
+* If the current note is deleted, the right hand view controller should act as if no note is selected.
+* Tapping the Trash button in the Location view controller does nothing, because the original code used the navigation controller (and the iPad version doesn't have that.)
+
+1. Open the storyboard. Go to the Note view controller.
+2. Drag in a Label. Make it use the System Bold 24pt font. Change the text to "No Note Selected".
+3. Open the Align menu, and add the Horizontal Center in Container and Vertical Center in Container constraints. Once that's done, select the lable and press Option-Command-= to re-position it in the center.
+4. Open DYNoteViewController.m in the assistant. Connect the label to a new outlet called `noNoteLabel`.
+5. Implement the `updateInterface` method. Update `setNote:` and `viewDidLoad` to call the new method.
+
