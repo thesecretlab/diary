@@ -11,6 +11,6 @@
 
 @interface DYNoteViewController : UIViewController
 
-@property (strong) DYNote* note;
+@property (nonatomic, strong) DYNote* note;
 
 @end

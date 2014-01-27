@@ -478,4 +478,9 @@ You can now type into the text field. Additionally, it will handle rotation corr
 
 The toolbar needs to be kept at the bottom of the screen. Select it, click the Pin menu, and pin the left, bottom and right edges.
 
+Next up, we need to make the app switch between notes. To do that, the DYNoteListViewController needs to be able to talk to the DYNoteViewController, and give it the updated note view when the selection changes. Additionally, we need to make DYNoteViewController respond when the note changes.
+
+1. Open DYNoteViewController.h. Make the `note` property be `nonatomic`.
+2. Open DYNoteViewController.m. Implement the `setNote:` method.
+
 

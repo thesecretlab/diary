@@ -161,4 +161,27 @@
     self.noteTextView.frame = textViewRect;
 }
 
+// Called when the view controller is given a new DYNote.
+- (void)setNote:(DYNote *)note {
+    
+    // First, we need to store the current text into the note.
+    
+    // Before we try to save, ensure that the note is still valid.
+    // (The underlying data may have been deleted, so check first.)
+    if (self.note.isFault == NO)
+        self.note.text = self.noteTextView.text;
+    
+    // Update to use the new DYNote.
+    _note = note;
+    self.noteTextView.text = self.note.text;
+    
+    // Dismiss the keyboard, if it's up.
+    [self.noteTextView resignFirstResponder];
+    
+    // Update the current note URL to reflect the fact that
+    // we're looking at a new note.
+    NSURL* noteURL = [self.note.objectID URIRepresentation];
+    [[NSUserDefaults standardUserDefaults] setURL:noteURL forKey:@"current_note"];
+}
+
 @end
