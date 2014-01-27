@@ -90,13 +90,37 @@
                                 <rect key="frame" x="0.0" y="980" width="768" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <items>
-                                    <barButtonItem title="Location" id="X5T-Av-FDW"/>
+                                    <barButtonItem title="Location" id="X5T-Av-FDW">
+                                        <connections>
+                                            <segue destination="1WX-hX-ICI" kind="popover" identifier="showLocation" popoverAnchorBarButtonItem="X5T-Av-FDW" id="dxE-3J-ZxU">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="eI7-CH-lkF"/>
-                                    <barButtonItem title="Audio" id="9yg-8l-EFP"/>
+                                    <barButtonItem title="Audio" id="9yg-8l-EFP">
+                                        <connections>
+                                            <segue destination="MJj-f9-wmM" kind="popover" identifier="showAudio" popoverAnchorBarButtonItem="9yg-8l-EFP" id="yM6-dq-E0g">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem width="42" style="plain" systemItem="fixedSpace" id="Crt-4M-onr"/>
-                                    <barButtonItem title="Reminder" id="UDG-oG-YSB"/>
+                                    <barButtonItem title="Reminder" id="UDG-oG-YSB">
+                                        <connections>
+                                            <segue destination="aPE-MZ-F0c" kind="popover" identifier="showReminder" popoverAnchorBarButtonItem="UDG-oG-YSB" id="l4P-xw-gFA">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="KR8-bS-DAM"/>
-                                    <barButtonItem systemItem="camera" id="AxD-NH-xlm"/>
+                                    <barButtonItem systemItem="camera" id="AxD-NH-xlm">
+                                        <connections>
+                                            <segue destination="79Q-Q2-KTC" kind="popover" identifier="showPhoto" popoverAnchorBarButtonItem="AxD-NH-xlm" id="I4q-Bg-JCq">
+                                                <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                            </segue>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
@@ -146,7 +170,247 @@
             </objects>
             <point key="canvasLocation" x="216" y="43"/>
         </scene>
+        <!--Photo View Controller-->
+        <scene sceneID="He1-d2-p06">
+            <objects>
+                <viewController definesPresentationContext="YES" id="79Q-Q2-KTC" customClass="DYPhotoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JZu-dn-xin"/>
+                        <viewControllerLayoutGuide type="bottom" id="vGY-nL-trx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hgq-c7-03m">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tap Take Photo to take a new photo." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="143" translatesAutoresizingMaskIntoConstraints="NO" id="1rh-lB-W8Z">
+                                <rect key="frame" x="89" y="237" width="143" height="41"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No Photo" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tc6-mN-VYt">
+                                <rect key="frame" x="103" y="201" width="115" height="28"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RWs-gy-CpV">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="maG-eC-dFP">
+                                <rect key="frame" x="0.0" y="436" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="hXH-VX-iPQ"/>
+                                    <barButtonItem title="Take Photo" id="nFD-W2-mRY">
+                                        <connections>
+                                            <action selector="takePhoto:" destination="79Q-Q2-KTC" id="nul-fX-m0E"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZTw-Ec-b8B">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Take Photo" id="sJV-jD-9Zh">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="aAQ-oJ-ojT">
+                                            <connections>
+                                                <action selector="deletePhoto:" destination="79Q-Q2-KTC" id="sF1-qm-Wc4"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="KJc-sV-mtI"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="imageView" destination="RWs-gy-CpV" id="Ti9-ku-Eiw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ca4-4E-cwv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3281" y="1417"/>
+        </scene>
+        <!--Location View Controller-->
+        <scene sceneID="6Or-AU-q8y">
+            <objects>
+                <viewController id="1WX-hX-ICI" customClass="DYLocationViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="c0V-H4-Hu8"/>
+                        <viewControllerLayoutGuide type="bottom" id="dx3-Fx-Blf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XcQ-wV-dqI">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="rAc-qY-ykg">
+                                <rect key="frame" x="142" y="231" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5mq-Fc-8qv">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </mapView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="x8G-PV-MPV">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Title" id="Gnf-SN-0v9">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="WVR-pr-EzO">
+                                            <connections>
+                                                <action selector="removeNote:" destination="1WX-hX-ICI" id="0Am-h9-9Bl"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <toolbarItems/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="locationActivity" destination="rAc-qY-ykg" id="jAc-jk-1fb"/>
+                        <outlet property="mapView" destination="5mq-Fc-8qv" id="K7m-pt-vkj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nCN-Qp-UQc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3281" y="268"/>
+        </scene>
+        <!--Audio View Controller-->
+        <scene sceneID="xPb-Yr-fTd">
+            <objects>
+                <viewController id="MJj-f9-wmM" customClass="DYAudioViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="H0k-S2-o5p"/>
+                        <viewControllerLayoutGuide type="bottom" id="mh3-sF-FzA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="VmF-hj-Tlj">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BBv-LY-HTe">
+                                <rect key="frame" x="106" y="235" width="108" height="97"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" image="RecordButton">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="controlButtonTapped:" destination="MJj-f9-wmM" eventType="touchUpInside" id="UX2-D6-WqR"/>
+                                </connections>
+                            </button>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="80e-yO-4CK">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Audio" id="y4F-0d-2cO">
+                                        <barButtonItem key="rightBarButtonItem" systemItem="trash" id="jBW-Ex-dsu">
+                                            <connections>
+                                                <action selector="removeAudio:" destination="MJj-f9-wmM" id="f8T-NL-7GD"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="controlButton" destination="BBv-LY-HTe" id="3mS-7Y-f1n"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1ZM-1v-RUK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3728" y="549"/>
+        </scene>
+        <!--Reminder View Controller-->
+        <scene sceneID="Jbf-zc-BMc">
+            <objects>
+                <viewController id="aPE-MZ-F0c" customClass="DYReminderViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="l9v-fa-q8L"/>
+                        <viewControllerLayoutGuide type="bottom" id="nVp-et-gn8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Eye-PQ-JE1">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Ft4-1n-h7o">
+                                <rect key="frame" x="0.0" y="163" width="320" height="216"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <date key="date" timeIntervalSinceReferenceDate="412513783.92545003">
+                                    <!--2014-01-27 11:09:43 +0000-->
+                                </date>
+                                <timeZone key="timeZone" name="America/Los_Angeles">
+                                    <mutableData key="data">
+VFppZgAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAC5AAAABAAAABCepkign7sVkKCGKqChmveQ
+y4kaoNIj9HDSYSYQ1v50INiArZDa/tGg28CQENzes6DdqayQ3r6VoN+JjpDgnneg4WlwkOJ+WaDjSVKQ
+5F47oOUpNJDmR1gg5xJREOgnOiDo8jMQ6gccIOrSFRDr5v4g7LH3EO3G4CDukdkQ76/8oPBxuxDxj96g
+8n/BkPNvwKD0X6OQ9U+ioPY/hZD3L4Sg+CiiEPkPZqD6CIQQ+viDIPvoZhD82GUg/chIEP64RyD/qCoQ
+AJgpIAGIDBACeAsgA3EokARhJ6AFUQqQBkEJoAcw7JAHjUOgCRDOkAmtvyAK8LCQC+CvoAzZzRANwJGg
+DrmvEA+priAQmZEQEYmQIBJ5cxATaXIgFFlVEBVJVCAWOTcQFyk2IBgiU5AZCRggGgI1kBryNKAb4heQ
+HNIWoB3B+ZAesfigH6HbkCB2KyAhgb2QIlYNICNq2hAkNe8gJUq8ECYV0SAnKp4QJ/7toCkKgBAp3s+g
+KupiECu+saAs036QLZ6ToC6zYJAvfnWgMJNCkDFnkiAycySQM0d0IDRTBpA1J1YgNjLokDcHOCA4HAUQ
+OOcaIDn75xA6xvwgO9vJEDywGKA9u6sQPo/6oD+bjRBAb9ygQYSpkEJPvqBDZIuQRC+goEVEbZBF89Mg
+Ry2KEEfTtSBJDWwQSbOXIErtThBLnLOgTNZqkE18laBOtkyQT1x3oFCWLpBRPFmgUnYQkFMcO6BUVfKQ
+VPwdoFY11JBW5TogWB7xEFjFHCBZ/tMQWqT+IFvetRBchOAgXb6XEF5kwiBfnnkQYE3eoGGHlZBiLcCg
+Y2d3kGQNoqBlR1mQZe2EoGcnO5BnzWagaQcdkGmtSKBq5v+Qa5ZlIGzQHBBtdkcgbq/+EG9WKSBwj+AQ
+cTYLIHJvwhBzFe0gdE+kEHT/CaB2OMCQdt7roHgYopB4vs2gefiEkHqer6B72GaQfH6RoH24SJB+XnOg
+f5gqkAABAAECAwEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
+AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
+AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
+AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
+</mutableData>
+                                </timeZone>
+                            </datePicker>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T2T-Te-IWl">
+                                <rect key="frame" x="251" y="117" width="51" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="reminderSwitchChanged:" destination="aPE-MZ-F0c" eventType="valueChanged" id="Myb-9v-7fv"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Show reminder" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9BV-PL-kam">
+                                <rect key="frame" x="20" y="122" width="116" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G9s-vA-xSM">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Reminder" id="uOZ-Et-1Xb"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="datePicker" destination="Ft4-1n-h7o" id="egv-OL-B79"/>
+                        <outlet property="reminderSwitch" destination="T2T-Te-IWl" id="Xre-xO-Nry"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fct-HQ-vcK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3728" y="1137"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="RecordButton" width="47" height="47"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="lightContent"/>
         <simulatedOrientationMetrics key="orientation"/>

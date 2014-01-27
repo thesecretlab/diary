@@ -495,3 +495,12 @@ Next, we'll make the note change when a new note is tapped.
 
 Tapping on notes in the master view controller now switches between notes. Additionally, you can swipe to bring up the list of notes when in portrait mode.
 
+Next up, we'll start adding the additional features.
+
+1. Drag in a View Controller. 
+2. Change its Size to Freeform; then, select the view inside it, and change its size to be 320 wide and 480 high.
+3. Change its class to DYPhotoViewController.
+4. Reconstruct the UI to match the iPhone version. You'll need to create the Navigation bar yourself - you don't get one for free, because this view isn't being presented in a Navigation Controller. Don't forget to connect the outlets and actions.
+5. Control-drag from the Camera button in the Note View Controller to the new Photo View Controller. Choose the Popover segue style. Name the segue 'showPhoto' (same as the iPhone version's.)
+6. Repeat the same process for the DYLocationViewController, the DYAudioNoteViewController and the DYReminderViewController. The names for the segues for each are `showLocation`, `showAudio` and `showReminder`.
+
