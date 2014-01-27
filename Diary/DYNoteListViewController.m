@@ -18,7 +18,7 @@
 // By adding <NSFetchedResultsControllerDelegate> after the parentheses,
 // we're telling the compiler that this object can work as a delegate for
 // an NSFetchedResultsController.
-@interface DYNoteListViewController () <NSFetchedResultsControllerDelegate, UISearchBarDelegate, UISearchDisplayDelegate> {
+@interface DYNoteListViewController () <NSFetchedResultsControllerDelegate, UISearchBarDelegate, UISearchDisplayDelegate, UISplitViewControllerDelegate> {
 }
 
 // The fetched results controller is the way we get info about the notes in the database.
@@ -70,6 +70,10 @@
         }
         
     }
+    
+    // Make the split view controller use this object as its delegate, so that swiping
+    // to present and dismiss the last of notes works. (This only has an effect on the iPad.)
+    self.splitViewController.delegate = self;
     
 }
 
@@ -288,6 +292,52 @@
     if (error != nil) {
         NSLog(@"Error fetching search results: %@", error);
     }
+    
+}
+
+// When this method is implemented, and this class is being used as the delegate for the
+// split view controller, you can swipe to bring up and dismiss the master view controller
+// when in portrait mode.
+- (void)splitViewController:(UISplitViewController *)svc willHideViewController:(UIViewController *)aViewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)pc {
+    
+}
+
+// Called by tableView:didSelectRowAtIndexPath: to get the DYNoteViewController.
+- (DYNoteViewController*) noteViewController {
+    
+    // This code should only be called when we're on the iPad.
+    if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad)
+        return nil;
+    
+    // Get the right-hand view controller, which is a navigation controller.
+    UINavigationController* detailNavigationController = self.splitViewController.viewControllers[1];
+    
+    // Get the view controller inside it.
+    DYNoteViewController* noteViewController = (id)detailNavigationController.topViewController;
+    
+    // Return it.
+    return noteViewController;
+    
+}
+
+// Called when a table view cell is tapped.
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    // Only run this code if we're on the iPad.
+    if (UI_USER_INTERFACE_IDIOM() != UIUserInterfaceIdiomPad)
+        return;
+    
+    // Work out which note was selected (taking into account whether or not we're searching.)
+    DYNote* selectedNote = nil;
+    
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        selectedNote = [self.searchFetchedResultsController objectAtIndexPath:indexPath];
+    } else {
+        selectedNote = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    }
+    
+    // Get the note view controller, and give it the new note.
+    [self noteViewController].note = selectedNote;
     
 }
 

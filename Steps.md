@@ -483,4 +483,15 @@ Next up, we need to make the app switch between notes. To do that, the DYNoteLis
 1. Open DYNoteViewController.h. Make the `note` property be `nonatomic`.
 2. Open DYNoteViewController.m. Implement the `setNote:` method.
 
+Next, we'll make the note change when a new note is tapped.
+
+1. Control-drag from the Split View Controller to the Note List View Controller, and make the split view controller use the note list as its delegate.
+2. Open DYNoteListViewController.m.
+3. Make the class conform to `UISplitViewControllerDelegate`.
+4. Update `viewDidLoad` to make the split view controller use this view controller as its delegate.
+5. Implement the `splitViewController: willHideViewController: withBarButtonItem: forPopoverController:` method (which is empty - it just needs to exist.)
+6. Implement the `noteViewController`
+7. Implement the `tableView:didSelectRowAtIndexPath:` method.
+
+Tapping on notes in the master view controller now switches between notes. Additionally, you can swipe to bring up the list of notes when in portrait mode.
 
