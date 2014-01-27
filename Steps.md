@@ -463,5 +463,19 @@ In order to have a navigation bar that doesn't have an ugly gap above it on the 
 5. Drag in a View Controller. Make it the root view of the Navigation Controller.
 6. Select the new view controller, and set its class to DYNoteViewController.
 
+Next, we need to set up the new Note View Controller to actually show content.
+
+1. Drag a Text View into the note view controller. Make it fill the screen.
+2. Drag a toolbar into the note view controller. Place it at the bottom of the screen.
+3. Connect the text view to the `noteTextView` outlet, and the toolbar to the `toolbar` outlet.
+4. Drag in three additional bar button items. Rename them so that they look like this:
+
+`Location |--| Audio |--| Reminder <-------> (camera icon)`
+
+(`|--|` = fixed space; `<--->` = flexible space.)
+
+You can now type into the text field. Additionally, it will handle rotation correctly, too.
+
+The toolbar needs to be kept at the bottom of the screen. Select it, click the Pin menu, and pin the left, bottom and right edges.
 
 
