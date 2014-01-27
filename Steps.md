@@ -518,3 +518,8 @@ There are a few remaining tweaks that we should add to the iPad version, before 
 4. Open DYNoteViewController.m in the assistant. Connect the label to a new outlet called `noNoteLabel`.
 5. Implement the `updateInterface` method. Update `setNote:` and `viewDidLoad` to call the new method.
 
+Next, we'll make deleting the current note deselect the note.
+
+1. Open DYNoteListViewController.m.
+2. Update `controller: didChangeObject: atIndexPath: forChangeType: newIndexPath:` to set the note view controller's note to nil if it's currently displaying the note that was deleted.
+

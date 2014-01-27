@@ -224,6 +224,13 @@
         case NSFetchedResultsChangeDelete:
             // An object was deleted, so tell the table view to delete the appropriate row.
             [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+            
+            // iPad only: if the note view controller is currently showing the object that just got deleted,
+            // set its 'note' property to nil. This will disable the interface, preventing user error.
+            if ([self noteViewController].note == anObject) {
+                [self noteViewController].note = nil;
+            }
+            
             break;
             
         case NSFetchedResultsChangeUpdate:
