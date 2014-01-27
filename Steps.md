@@ -523,3 +523,8 @@ Next, we'll make deleting the current note deselect the note.
 1. Open DYNoteListViewController.m.
 2. Update `controller: didChangeObject: atIndexPath: forChangeType: newIndexPath:` to set the note view controller's note to nil if it's currently displaying the note that was deleted.
 
+Finally, we'll make it so that tapping the Trash button in the Location popover removes the location.
+
+1. Open DYLocationViewController.m.
+2. Update removeNote: to remove all annotations, stop the location manager, and set it to nil.
+

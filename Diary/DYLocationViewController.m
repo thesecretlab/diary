@@ -106,6 +106,13 @@
     // Remove the location from the note
     self.note.location = nil;
     
+    // Hide the pin by deleting all annotations.
+    [self.mapView removeAnnotations:self.mapView.annotations];
+    
+    // Disable the location manager.
+    [self.locationManager stopUpdatingLocation];
+    self.locationManager = nil;
+    
     // Return to the previous view controller.
     [self.navigationController popViewControllerAnimated:YES];
 }
