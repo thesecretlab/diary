@@ -25,9 +25,7 @@ We're now going to make the app use the provided icons.
 We're going to make DYViewController become the DYNoteViewController.
 
 1. Rename DYViewController to DYNoteViewController.
-2. Embed DYNoteViewController in a UINavigationViewController. 
-3. Add a text view. Make it fill the screen.
-4. Select the bar at the top of the view controller, and change the Title to Note
+2. Add a text view. Make it fill the screen.
 
 ## 01-ViewControllers
 
@@ -51,6 +49,9 @@ Now, we'll make it so that tapping the cell takes you to the Note View Controlle
 One last step: set the title of the view controller.
 
 9. Select the bar at the top of the table view controller, and change its title to Notes.
+
+10. Select the bar at the top of the DYNoteViewController, and change the Title to Note.
+
 
 ## 02-Note
 
