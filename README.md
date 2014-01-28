@@ -1,6 +1,6 @@
 # Diary App
 
-This is a demonstration app for Secret Lab's "iOS developer training":http://www.secretlab.com.au/training/
+This is a demonstration app for Secret Lab's iOS developer training: http://www.secretlab.com.au/training/
 
 ## License
 
