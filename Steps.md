@@ -5,13 +5,12 @@
 *Creating a project, understanding bundle identifiers, class prefixes. The concept of universal apps.*
 
 1. Create a new project.
-    1. Create a single-page application.
+    1. Create a single-view application.
     2. Name it 'Diary'. 
     3. Set your organisation name to your name.
     4. Set the bundle identifier to your domain name, but reversed.
     3. Set the class prefix to 'DY'. 
     4. Set the device type to 'iPhone'.
-    5. Ensure that 'Use Core Data' is **off**.
     
 We're now going to make the app use the provided icons.
 
@@ -33,8 +32,7 @@ Next, we'll make the view controller that lists all of the notes.
 
 4. Add a Navigation Controller to the storyboard.
 5. Drag the Initial View Controller arrow from the Note View Controller to the Navigation Controller.
-6. Drag a Table View into the Table View Controller.
-7. Select the Table View. 
+6. Select the Table View. 
     1. Set its Content to Static Cells.
     2. Select the Table View Section. Set its number of rows to 1.
     3. Select the cell.
