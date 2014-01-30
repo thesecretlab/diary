@@ -60,6 +60,8 @@ One last step: set the title of the view controller.
 
 2. Add content as per DYNote.h 
 
+DYNote.h
+
 	+#import <Foundation/Foundation.h>
 	+
 	+@interface DYNote : NSObject
@@ -81,47 +83,49 @@ One last step: set the title of the view controller.
 
  and DYNote.m.
  
-	 +#import "DYNote.h"
-	 +
-	 +@implementation DYNote
-	 +
-	 +// The init method is called when the object is created.
-	 +- (id)init
-	 +{
-	 +    self = [super init];
-	 +    if (self) {
-	 +        
-	 +        // Set the dates. These are declared as 'readonly' in the header, so doing this won't work:
-	 +        // self.createdDate = ...
-	 +        // Instead, we set the variable directly:
-	 +        // _createdDate = ...
-	 +        
-	 +        // Created date is now
-	 +        _createdDate = [NSDate date];
-	 +        
-	 +        // Last modified date is also now
-	 +        _modifiedDate = [NSDate date];
-	 +        
-	 +    }
-	 +    return self;
-	 +}
-	 +
-	 +// The word count method splits the text up by spaces, and counts the number of pieces.
-	 +- (int) wordCount {
-	 +    
-	 +    NSArray* words = [self.text componentsSeparatedByString:@" "];
-	 +    
-	 +    return [words count];
-	 +}
-	 +
-	 +// Override the 'setText:' method, which is called when the 'text' property is set.
-	 +// We're overriding it because we want the 'last modified' date to be updated whenever the property is updated.
-	 +- (void)setText:(NSString *)text {
-	 +    _text = text;
-	 +    _modifiedDate = [NSDate date];
-	 +}
-	 +
-	 +@end
+ DYNote.m
+
+	+#import "DYNote.h"
+	+
+	+@implementation DYNote
+	+
+	+// The init method is called when the object is created.
+	+- (id)init
+	+{
+	+    self = [super init];
+	+    if (self) {
+	+        
+	+        // Set the dates. These are declared as 'readonly' in the header, so doing this won't work:
+	+        // self.createdDate = ...
+	+        // Instead, we set the variable directly:
+	+        // _createdDate = ...
+	+        
+	+        // Created date is now
+	+        _createdDate = [NSDate date];
+	+        
+	+        // Last modified date is also now
+	+        _modifiedDate = [NSDate date];
+	+        
+	+    }
+	+    return self;
+	+}
+	+
+	+// The word count method splits the text up by spaces, and counts the number of pieces.
+	+- (int) wordCount {
+	+    
+	+    NSArray* words = [self.text componentsSeparatedByString:@" "];
+	+    
+	+    return [words count];
+	+}
+	+
+	+// Override the 'setText:' method, which is called when the 'text' property is set.
+	+// We're overriding it because we want the 'last modified' date to be updated whenever the property is updated.
+	+- (void)setText:(NSString *)text {
+	+    _text = text;
+	+    _modifiedDate = [NSDate date];
+	+}
+	+
+	+@end
  
 Key features of the Note object at this point
 
@@ -143,6 +147,7 @@ First, we'll create the code for the Notes screen (the table view controller.)
 3. Provide the code for DYNoteListViewController.m (there's nothing in the header yet.)
 
 DYNoteListViewController.h
+
 	+#import <UIKit/UIKit.h>
 	+
 	+@interface DYNoteListViewController : UITableViewController
@@ -150,6 +155,7 @@ DYNoteListViewController.h
 	+@end
 
 DYNoteListViewController.m
+
 	+#import "DYNoteListViewController.h"
 	+#import "DYNote.h"
 	+
