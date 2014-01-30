@@ -197,7 +197,6 @@ DYNoteListViewController.m
 3. Add the `numberOfSectionsInTableView:`, `tableView: numberOfRowsInSection:` and `tableView: cellForRowAtIndexPath:` methods to 
 
 DYNoteListViewController.m.
-
   
 	#import "DYNoteListViewController.h"
 	+#import "DYNote.h"
@@ -284,6 +283,7 @@ DYNoteViewController.m
 3. Add a DYNote* property called 'note' in DYNoteViewController.h.
 
 DYNoteViewController.h
+
 	+import "DYNote.h"
 	...
 	+@property (strong) DYNote* note;
@@ -291,6 +291,7 @@ DYNoteViewController.h
 4. Implement the `viewWillAppear:` and `viewWillDisappear:` methods in DYNoteViewController.m.
 
 DYNoteViewController.m.
+
 	+// Called when the view controller is about to appear.
 	+- (void)viewWillAppear:(BOOL)animated {
 	+    // Make the note text view use the text that's in the note.
@@ -346,6 +347,7 @@ DYNoteListViewController.m
 1. Modify the `viewDidLoad` method in DYNoteListViewController to add the Edit button.
 
 DYNoteListViewController.m
+
 	-(void)viewDidLoad{
 	...
 	+// Get the table view's "Edit" button, which will put the table into Edit mode when tapped
@@ -355,6 +357,7 @@ DYNoteListViewController.m
 2. Implement the `tableView: commitEditingStyle: forRowAtIndexPath:` method.
 
 DYNoteListViewController.m
+
 	+// Called when the user has tapped the Delete button.
 	+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
 	+    
@@ -378,6 +381,7 @@ Next, we'll add a + button to the top-right - when tapped, it'll add a new note.
 1. Remove the code that creates the demo notes.
 
 DYNoteListViewController.m
+
 	-(void)viewDidLoad{
 	...
 	-    // Create 100 test notes
@@ -400,6 +404,7 @@ DYNoteListViewController.m
 6. Implement the `addNote:` method.
 
 DYNoteListViewController.m
+
 	+// Called when the user taps the Add button.
 	 +- (IBAction)addNote:(id)sender {
 	 +    
@@ -433,6 +438,7 @@ DYNoteListViewController.m
 5. Update DYNote.h and DYNote.m to reflect the latest changes. Basically, almost all of the code in these files are changed.
 
 DYNote.h
+
 	#import <Foundation/Foundation.h>
 	
 	+@import CoreData;
@@ -514,6 +520,7 @@ DYNote.m
 6. Add DYNoteStorage. 
 
 DYNoteStorage.h
+
 	+
 	+#import <Foundation/Foundation.h>
 	+
@@ -539,6 +546,7 @@ DYNoteStorage.h
 	+@end
 
 DYNoteStorage.m
+
 	+#import "DYNoteStorage.h"
 	+
 	+// This variable stores the single, shared instance of this class.
@@ -904,6 +912,7 @@ DYNoteListViewController.m
 8. Update `viewWillDisappear` in DYNoteViewController.m to save when exiting.
 
 DYNoteViewController.m
+
 	- (void)viewWillDisappear:(BOOL)animated {
 	  // Store the text that's in the note text view into the note itself.
 	  self.note.text = self.noteTextView.text;
@@ -927,12 +936,14 @@ Next, we'll make the view controller able to work with the search controller.
 2. Make DYNoteListViewController conform to `UISearchBarDelegate` and `UISearchDisplayDelegate`.
 
 DYNoteListViewController.m
+
 	+@interface DYNoteListViewController () <NSFetchedResultsControllerDelegate, UISearchBarDelegate, UISearchDisplayDelegate> {
 	}
 
 3. Add a new strong `NSFetchedResultsController` property called `searchFetchedResultsController`.
 
 DYNoteListViewController.m
+
 	+@property (strong) NSFetchedResultsController* searchFetchedResultsController;
 
 
@@ -941,6 +952,7 @@ Next, we'll update the table view and fetched results controller delegate method
 1. Update the `numberOfSectionsInTableView:`, `tableView:numberOfRowsInSection:`, `configureCell:atIndexPath:`, `prepareForSegue:sender:`, `controllerWillChangeContent:`, `controllerDidChangeContent:`,  and `controller:didChangeObject:atIndexPath:forChangeType:newIndexPath:` methods.
 
 DYNoteListViewController.m
+
 	- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
   
 	  // Ask the fetched results controller to tell us how many sections there are.
@@ -1118,6 +1130,7 @@ DYNoteListViewController.m
 2. Implement the `searchDisplayControllerWillBeginSearch:`, `searchDisplayControllerWillEndSearch:`, `searchBar:textDidChange:` and `updateSearchQuery:` methods.
 
 DYNoteListViewController.m
+
 	+// Called when search begins (when the user taps in the search box)
 	+- (void)searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller {
 	+    self.searchFetchedResultsController = [[DYNoteStorage sharedStorage] createFetchedResultsController];
@@ -1174,6 +1187,7 @@ DYNoteListViewController.m
 2. Update DYNoteStorage.h and .m to add the `noteWithURL:` method.
 
 DYNoteStorage.m (Note: this is already done by 07 in the repo)
+
 	+// Returns a note, given its URL in the database.
 	+- (DYNote *)noteWithURL:(NSURL *)url {
 	+    // First, we use the URL to ask the persistent store coordinator for an object ID.
@@ -1191,6 +1205,7 @@ DYNoteStorage.m (Note: this is already done by 07 in the repo)
 3. Update DYNoteListViewController.m's `viewDidLoad` method.
 
 DYNoteListViewController.m
+
 	-(void)viewDidLoad{
 	...
 	+    // Get the URL for the note that we were last editing from user defaults, if one is set.
@@ -1217,6 +1232,7 @@ DYNoteListViewController.m
 4. Update DYNoteViewController.m's `viewDidLoad` and `viewWillDisappear` method.
 
 DYNoteViewController.m
+
 	- (void)viewDidLoad
 	{
 	  [super viewDidLoad];
@@ -1267,6 +1283,7 @@ Next, make the code know about DYNotes.
 3. Import DYNote.h, and add a property: a DYNote called 'note'.
 
 DYLocationViewController.h
+
 	+#import <UIKit/UIKit.h>
 	+#import "DYNote.h"
 	+
@@ -1294,6 +1311,7 @@ Next, we'll make the DYLocationViewController be given the note when the Locatio
 2. Add the `prepareForSegue:` method to DYNoteViewController.
 
 DYNoteViewController.m
+
 	+#import "DYLocationViewController.h"
 
 	+// Called when a segue is about to happen.
@@ -1318,6 +1336,7 @@ We'll now make DYLocationViewController get the location, when it appears.
 3. Update `viewDidLoad` and implement `locationManager: didUpdateLocations:` and `locationManager: didFailWithError:` in DYLocationManager.m.
 
 DYLocationViewController.m (Complete file)
+
 	+#import "DYLocationViewController.h"
 	+
 	+@interface DYLocationViewController () <CLLocationManagerDelegate>
@@ -1412,6 +1431,7 @@ Finally, we'll make the user able to delete the location.
 8. Implement the method.
 
 DYLocationViewController.m
+
 	+// Called when the Trash button is tapped.
 	+- (IBAction)removeNote:(id)sender {
 	+    
@@ -1438,6 +1458,7 @@ We'll now connect it to the code.
 3. Connect the Map View to an outlet called mapView.
 
 DYLocationViewController.m
+
 	#import "DYLocationViewController.h"
 	+@import MapKit;
 
@@ -1455,6 +1476,7 @@ DYLocationViewController.m
 4. Implement the `updateAnnotation` method, and update `locationManager: didUpdateLocations:` and `viewDidLoad`.
 
 DYLocationViewController.m
+
 	- (void)viewDidLoad
 	{
 	  [super viewDidLoad];
@@ -1555,11 +1577,13 @@ Next, we'll make the database be able to store the audio note data.
 6. Open DYNote.h, and add a property for the new attribute.
 
 DYNote.h
+
 	@property (nonatomic, strong) CLLocation* location;
 
 	+/// The audio note attached, stored as an NSData.
 	+@property (nonatomic, strong) NSData* audioNote;
 	+
+	
 7. Mark the new property as `@dynamic` in DYNote.m.
 
 DYNote.m
@@ -1584,6 +1608,7 @@ Next, we'll make the note view controller pass its note to the audio view contro
 3. Update `prepareForSegue` to make it pass the note to the audio controller.
 
 DYNoteViewController.m
+
 	- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
   
 	  if ([segue.identifier isEqualToString:@"showLocation"]) {
@@ -1617,6 +1642,7 @@ Next, we'll make the play/pause/stop button update when the end of the recording
 3. Update the `startPlaying` method to set the delegate.
 
 DYAudioNoteViewController.h
+
 	+#import <UIKit/UIKit.h>
 	+#import "DYNote.h"
 	+
@@ -1627,6 +1653,7 @@ DYAudioNoteViewController.h
 	+@end
 	
 DYAudioNoteViewController.m
+
 	+#import "DYAudioViewController.h"
 	+
 	+@import AVFoundation;
@@ -1894,6 +1921,7 @@ We'll now make the application notice when you're creating a note during an even
 1. Open DYNoteListViewController and modify the addNote: method to remove the line of code that sets the note's text.
 
 DYNoteListViewController.m
+
 	  - (IBAction)addNote:(id)sender {
   
 	  // Tell the DYNoteStorage to create a new note.
@@ -1909,6 +1937,7 @@ DYNoteListViewController.m
 5. Implement the `eventStore` method (which is a lazy getter for the property.)
 
 DYNoteStorage.m
+
 	+// Returns the event store.
 	+- (EKEventStore*) eventStore {
 	+    if (_eventStore != nil)
@@ -1923,6 +1952,7 @@ DYNoteStorage.m
 6. Update the `createNote` method to request calendar access.
 
 DYNoteStorage.m
+
 	// Creates a new note, and adds it to the database.
 	- (DYNote *)createNote {
   
@@ -1961,6 +1991,7 @@ DYNoteStorage.m
 7. Implement the `prepareNoteWithCalendarEvent:` method, which queries the calendar and finds events to use.
 
 DYNoteStorage.m
+
 	+// Called by createNote, to try to find the event that the note is being created in.
 	+- (void) prepareNoteWithCalendarEvent:(DYNote*)note {
 	+
@@ -2081,6 +2112,7 @@ Next, we'll make the note view controller pass the DYNote to the DYReminderViewC
 3. Update `prepareForSegue:` to pass the note when the `showReminder` segue is happening.
 
 DYNoteViewController.m
+
 	// Called when a segue is about to happen.
 	- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
   
@@ -2118,6 +2150,7 @@ Next, we'll add support for setting reminders.
 2. Add a nonatomic `NSDate` property called `reminderDate`.
 
 DYNote.h
+
 	@property (nonatomic, strong) NSData* audioNote;
 
 	+/// The date at which a reminder will appear.
@@ -2129,6 +2162,7 @@ DYNote.h
 5. Implement the `localNotification`, `setReminderDate:` and `reminderDate` methods.
 
 DYNote.m
+
 	+/// Finds the notification associated with this note, if any exists.
 	+- (UILocalNotification*) localNotification {
 	+    
@@ -2205,6 +2239,7 @@ The way that this works is as follows:
 2. Update the `viewDidLoad` and `reminderSwitchChanged:` methods.
 
 DYReminderViewController.h
+
 	+#import <UIKit/UIKit.h>
 	+#import "DYNote.h"
 	+
@@ -2213,7 +2248,9 @@ DYReminderViewController.h
 	+@property (strong) DYNote* note;
 	+
 	+@end
+	
 DYReminderViewController.m
+
 	+#import "DYReminderViewController.h"
 	+
 	+@interface DYReminderViewController ()
@@ -2322,6 +2359,7 @@ Currently, the text view never dismisses the keyboard. We're going to make it so
 4. Implement the `textViewTapped:` method in DYNoteViewController.m
 
 DYNoteViewController.m
+
 	+// Called when the user taps on the text view.
 	+- (IBAction)textViewTapped:(id)sender {
 	+    
@@ -2335,7 +2373,6 @@ DYNoteViewController.m
 	+        [self.noteTextView becomeFirstResponder];
 	+}
 
-
 Now, we'll make it so that the text field adjusts its size to account for the keyboard. Additionally, because the text field is under the toolbar, we also want to take into account the toolbar's size.
 
 1. Open the storyboard.
@@ -2343,6 +2380,7 @@ Now, we'll make it so that the text field adjusts its size to account for the ke
 3. Implement the `updateTextInsetWithBottomHeight:`, `keyboardWillShow:` and `keyboardWillHide:` methods.
 
 DYNoteViewController.m
+
 	+// Called when the keyboard is about to appear.
 	+- (void) keyboardWillShow:(NSNotification*)notification {
 	+    
@@ -2387,6 +2425,7 @@ DYNoteViewController.m
 4. Update the `viewDidLoad`, `viewWillAppear` and `viewWillDisappear` methods.
 
 DYNoteViewController.m
+
 	- (void)viewDidLoad
 	{
 	    [super viewDidLoad];
@@ -2445,11 +2484,13 @@ First, we'll need to store the photo data in notes.
 3. Open `DYNote.h`. Add a new `nonatomic` property: an `NSData` called `image`.
 
 DYNote.h
+
 	@property (nonatomic, strong) NSData* audioNote;
 
 	+/// The image, stored as an NSData
 	+@property (nonatomic, strong) NSData* image;
 	+
+	
 4. Open `DYNote.m`. Declare the `image` property as `@dynamic`.
 
 DYNote.m
@@ -2484,6 +2525,7 @@ Next, we'll make the photo view controller able to receive a note; we'll also ma
 5. Modify 
 
 DYNoteViewController.m
+
 	- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
   
 	  if ([segue.identifier isEqualToString:@"showLocation"]) {
@@ -2536,6 +2578,7 @@ Next, we'll implement the code.
 2. Update the `viewDidLoad` method, and implement the `takePhoto:`, `deletePhoto:`, `imagePickerController:didFinishPickingMediaWithInfo:` and `imagePickerControllerDidCancel:` methods.
 
 DYPhotoViewController.h (Completed files)
+
 	+#import <UIKit/UIKit.h>
 	+#import "DYNote.h"
 	+
@@ -2546,6 +2589,7 @@ DYPhotoViewController.h (Completed files)
 	+@end
 	
 DYPhotoViewController.m
+
 	+#import "DYPhotoViewController.h"
 	+
 	+@interface DYPhotoViewController () <UINavigationControllerDelegate, UIImagePickerControllerDelegate>
@@ -2731,15 +2775,18 @@ Next up, we need to make the app switch between notes. To do that, the DYNoteLis
 1. Open DYNoteViewController.h. Make the `note` property be `nonatomic`.
 
 DYNoteViewController.h
+
 	@interface DYNoteViewController : UIViewController
 
 	-@property (strong) DYNote* note;
 	+@property (nonatomic, strong) DYNote* note;
 
 	@end
+	
 2. Open DYNoteViewController.m. Implement the `setNote:` method.
 
 DYNoteViewController.m
+
 	+// Called when the view controller is given a new DYNote.
 	+- (void)setNote:(DYNote *)note {
 	+    
@@ -2770,6 +2817,7 @@ Next, we'll make the note change when a new note is tapped.
 3. Make the class conform to `UISplitViewControllerDelegate`.
 
 DYNoteListViewController.m
+
 	-@interface DYNoteListViewController () <NSFetchedResultsControllerDelegate, UISearchBarDelegate, UISearchDisplayDelegate> {
 	+@interface DYNoteListViewController () <NSFetchedResultsControllerDelegate, UISearchBarDelegate, UISearchDisplayDelegate, UISplitViewControllerDelegate> {
 	}
@@ -2777,6 +2825,7 @@ DYNoteListViewController.m
 4. Update `viewDidLoad` to make the split view controller use this view controller as its delegate.
 
 DYNoteListViewController.m
+
 	- (void)viewDidLoad {
   
 	  // Get the table view's "Edit" button, which will put the table into Edit mode when tapped
@@ -2826,15 +2875,18 @@ DYNoteListViewController.m
 5. Implement the `splitViewController: willHideViewController: withBarButtonItem: forPopoverController:` method (which is empty - it just needs to exist.)
 
 DYNoteListViewController.m
+
 	+// When this method is implemented, and this class is being used as the delegate for the
 	+// split view controller, you can swipe to bring up and dismiss the master view controller
 	+// when in portrait mode.
 	+- (void)splitViewController:(UISplitViewController *)svc willHideViewController:(UIViewController *)aViewController withBarButtonItem:(UIBarButtonItem *)barButtonItem forPopoverController:(UIPopoverController *)pc {
 	+    
 	+}
+	
 6. Implement the `noteViewController`
 
 DYNoteListViewController.m
+
 	+// Called by tableView:didSelectRowAtIndexPath: to get the DYNoteViewController.
 	+- (DYNoteViewController*) noteViewController {
 	+    
@@ -2856,6 +2908,7 @@ DYNoteListViewController.m
 7. Implement the `tableView:didSelectRowAtIndexPath:` method.
 
 DYNoteListViewController.m
+
 	+// Called when a table view cell is tapped.
 	+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	+    
@@ -2877,7 +2930,6 @@ DYNoteListViewController.m
 	+    
 	+}
 	+
-
 
 Tapping on notes in the master view controller now switches between notes. Additionally, you can swipe to bring up the list of notes when in portrait mode.
 
@@ -2905,6 +2957,7 @@ There are a few remaining tweaks that we should add to the iPad version, before 
 5. Implement the `updateInterface` method. Update `setNote:` and `viewDidLoad` to call the new method.
 
 DYNoteViewController.m
+
 	+@property (weak, nonatomic) IBOutlet UILabel *noNoteLabel;
 	...
 	- (void)viewDidLoad
@@ -2979,6 +3032,7 @@ Next, we'll make deleting the current note deselect the note.
 2. Update `controller: didChangeObject: atIndexPath: forChangeType: newIndexPath:` to set the note view controller's note to nil if it's currently displaying the note that was deleted.
 
 DYNoteListViewController.m
+
 	- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
   
 	  UITableView* tableView = nil;
@@ -3021,13 +3075,13 @@ DYNoteListViewController.m
   
 	}
 
-
 Finally, we'll make it so that tapping the Trash button in the Location popover removes the location.
 
 1. Open DYLocationViewController.m.
 2. Update removeNote: to remove all annotations, stop the location manager, and set it to nil.
 
 DYLocationViewController.m
+
 	- (IBAction)removeNote:(id)sender {
   
 	  // Remove the location from the note
