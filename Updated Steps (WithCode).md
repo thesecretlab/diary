@@ -134,7 +134,7 @@ Key features of the Note object at this point
     @property (readonly) NSDate* modifiedDate;
     - (int) wordCount;
 
-## 03- NoteCollection
+## 03-NoteCollection
 
 *Foundation. Arrays and other container objects. Mutable and immutable objects.*
 
@@ -428,7 +428,7 @@ DYNoteListViewController.m
 	 +}
 	 
 	 
-##07-CoreData
+## 07-CoreData
 
 1. Create a new Managed Object Model. Call it "Diary".
 2. Open the new model. Add a new Entity. Call it "Note".
@@ -946,6 +946,7 @@ DYNoteListViewController.m
 
 	+@property (strong) NSFetchedResultsController* searchFetchedResultsController;
 
+## 08-Searching
 
 Next, we'll update the table view and fetched results controller delegate methods to work with the search results table. 
 
@@ -1180,7 +1181,7 @@ DYNoteListViewController.m
 	+
 	@end
 
-##08-UserDefaults
+## 09-UserDefaults
 
 1. Open the storyboard. Select the Note View Controller. Change its Storyboard ID to 'DYNoteViewController'.
 
@@ -1252,7 +1253,7 @@ DYNoteViewController.m
 	}
 
 
-##09-Location
+## 10-Location
 
 1. Add the CoreLocation framework to the project.
 
@@ -1442,7 +1443,7 @@ DYLocationViewController.m
 	+    [self.navigationController popViewControllerAnimated:YES];
 	+}
 
-##10-Maps
+## 11-Maps
 
 1. Make the project use the MapKit framework.
 2. Open the Storyboard. 
@@ -1541,7 +1542,7 @@ DYLocationViewController.m
 	+}
 
 
-##11-Audio
+## 12-Audio
 
 1. Open the storyboard, and go to the Note View Controller.
 2. Add a Flexible Space to the toolbar at the bottom of the screen.
@@ -1914,7 +1915,7 @@ DYAudioNoteViewController.m
 	+
 	+@end
 
-## 12-EventKit
+## 13-EventKit
 
 We'll now make the application notice when you're creating a note during an event that's on your calendar. If you create a note during an event, or within 15 (Provided code does 6 hours) minutes of it starting and ending, the default note text will read "Note created during (event name)".
 
@@ -2076,7 +2077,7 @@ DYNoteStorage.m
 	+}
 	+
 	
-## 13-LocalNotifications
+## 14-LocalNotifications
 
 We'll make it so that you can set a time for reminding you of a note.
 
@@ -2349,7 +2350,7 @@ DYReminderViewController.m
 	+    }
 	+}	
 	
-##14-NicerTextView
+## 15-NicerTextView
 
 Currently, the text view never dismisses the keyboard. We're going to make it so that tapping the text view dismisses the keyboard, when it's up.
 
@@ -2473,7 +2474,7 @@ DYNoteViewController.m
 	+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 	}
  
-##15-Images
+## 16-Images
 
 We'll add the ability to take photos and put them in notes.
 
@@ -2714,7 +2715,7 @@ DYPhotoViewController.m
 	+@end	
 	
 
-##16-iPad
+## 17-iPad
 
 We'll now port this entire app to the iPad.
 
@@ -2942,7 +2943,7 @@ Next up, we'll start adding the additional features.
 5. Control-drag from the Camera button in the Note View Controller to the new Photo View Controller. Choose the Popover segue style. Name the segue 'showPhoto' (same as the iPhone version's.)
 6. Repeat the same process for the DYLocationViewController, the DYAudioNoteViewController and the DYReminderViewController. The names for the segues for each are `showLocation`, `showAudio` and `showReminder`.
 
-##17-iPadPolish
+## 18-iPadPolish
 
 There are a few remaining tweaks that we should add to the iPad version, before it's ready to ship:
 
@@ -3098,7 +3099,7 @@ DYLocationViewController.m
 	  [self.navigationController popViewControllerAnimated:YES];
 	}
 	
-##18-LaunchImages
+## 19-LaunchImages
 
 The last step is to provide launch images.
 
