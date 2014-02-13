@@ -706,7 +706,7 @@ DYNoteStorage.m
 	+        [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest // What to look for
 	+                                            managedObjectContext:self.managedObjectContext // Where to find it
 	+                                              sectionNameKeyPath:nil // How to group them (nil = no sections)
-	+                                                       cacheName:@"MainCache"]; // Where to cache them
+	+                                                       cacheName:nil]; // Where to cache them (nil = no caching)
 	+    
 	+    return newFetchedResultsController;
 	+}
@@ -958,7 +958,7 @@ DYNoteListViewController.m
   
 	  // Ask the fetched results controller to tell us how many sections there are.
 	-    return [[self.fetchedResultsController sections] count];
-	+    if (self.searchDisplayController.active) {
+	+    if (tableView == self.searchDisplayController.searchResultsTableView) {
 	+        return [[self.searchFetchedResultsController sections] count];
 	+    } else {
 	+        return [[self.fetchedResultsController sections] count];
@@ -972,7 +972,7 @@ DYNoteListViewController.m
 	  // Ask the fetched results controller to tell us about how many rows are in the section.
 	-    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
 	-    return [sectionInfo numberOfObjects];
-	+    if (self.searchDisplayController.active) {
+	+    if (tableView == self.searchDisplayController.searchResultsTableView) {
 	+        id <NSFetchedResultsSectionInfo> sectionInfo = [self.searchFetchedResultsController sections][section];
 	+        return [sectionInfo numberOfObjects];
 	+    } else {
@@ -988,22 +988,27 @@ DYNoteListViewController.m
 	-    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"NoteCell"];
 	+    UITableViewCell* cell = [self.tableView dequeueReusableCellWithIdentifier:@"NoteCell"];
   
-	  [self configureCell:cell atIndexPath:indexPath];
+	- [self configureCell:cell atIndexPath:indexPath];
+    + [self configureCell:cell atIndexPath:indexPath inTableView:tableView];
   
 	  // Return the cell to the table view, which will then show it.
 	  return cell;
   
 	}
+    
+    
 
 	// Called by either tableView:cellForRowAtIndexPath: or by
 	// controller:didChangeObject:atIndexPath:forChangeType:newIndexPath:.
-	- (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+	- - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    + - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath inTableView:(UITableView*) tableView {
+        
   
 	  // Work out which note should be shown in this cell.
 	-    DYNote* note = [self.fetchedResultsController objectAtIndexPath:indexPath];
 	+    
 	+    DYNote* note = nil;
-	+    if (self.searchDisplayController.active) {
+	+    if (tableView == self.searchDisplayController.searchResultsTableView) {
 	+        note = [self.searchFetchedResultsController objectAtIndexPath:indexPath];
 	+    } else {
 	+        note = [self.fetchedResultsController objectAtIndexPath:indexPath];
@@ -1026,17 +1031,17 @@ DYNoteListViewController.m
 		  UITableViewCell* cell = sender;
 	  
 		  // Work out which row this cell was.
-	-        NSIndexPath* indexPath = [self.tableView indexPathForCell:cell];
-	+        NSIndexPath* indexPath = nil;
-	+        
-	+        if (self.searchDisplayController.active) {
-	+            indexPath = [self.searchDisplayController.searchResultsTableView indexPathForCell:cell];
-	+        } else {
-	+            indexPath = [self.tableView indexPathForCell:cell];
-	+        }
-	  
-		  // Use that to get the appropriate note.
-		  DYNote* note = [self.fetchedResultsController objectAtIndexPath:indexPath];
+     +    NSIndexPath* indexPath = nil;
+     +    
+     +    DYNote* note = nil;
+     +    
+     +    if (self.searchDisplayController.active) {
+     +        indexPath = [self.searchDisplayController.searchResultsTableView indexPathForCell:cell];
+     +        note = [self.searchFetchedResultsController objectAtIndexPath:indexPath];
+     +    } else {
+     +        indexPath = [self.tableView indexPathForCell:cell];
+     +        note = [self.fetchedResultsController objectAtIndexPath:indexPath];
+     +    }
 	  
 		  noteViewController.note = note;
 	  }
@@ -1063,7 +1068,7 @@ DYNoteListViewController.m
 	  // Tell the table view to prepare to group together a bunch of animations.
 	-    [self.tableView beginUpdates];
 	+    
-	+    if (self.searchDisplayController.active) {
+	+    if (controller == self.searchFetchedResultsController) {
 	+        [self.searchDisplayController.searchResultsTableView beginUpdates];
 	+    } else {
 	+        [self.tableView beginUpdates];
@@ -1078,7 +1083,7 @@ DYNoteListViewController.m
 	  // that have been queued up.
 	-    [self.tableView endUpdates];
 	+    
-	+    if (self.searchDisplayController.active) {
+	+    if (controller == self.searchFetchedResultsController) {
 	+        [self.searchDisplayController.searchResultsTableView endUpdates];
 	+    } else {
 	+        [self.tableView endUpdates];
@@ -1091,7 +1096,7 @@ DYNoteListViewController.m
 	- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
   
 	+    UITableView* tableView = nil;
-	+    if (self.searchDisplayController.active) {
+	+    if (controller == self.searchFetchedResultsController) {
 	+        tableView = self.searchDisplayController.searchResultsTableView;
 	+    } else {
 	+        tableView = self.tableView;
@@ -1114,7 +1119,7 @@ DYNoteListViewController.m
 		  case NSFetchedResultsChangeUpdate:
 			  // An object was changed, so update its contents by calling configureCell:atIndexPath.
 	-            [self configureCell:[self.tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
-	+            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+	+            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath inTableView:tableView];
 			  break;
 		  
 		  case NSFetchedResultsChangeMove:
@@ -1195,7 +1200,7 @@ DYNoteStorage.m (Note: this is already done by 07 in the repo)
 	+    NSManagedObjectID* objectID = [self.persistentStoreCoordinator managedObjectIDForURIRepresentation:url];
 	+    
 	+    // Next, we get the object with that ID.
-	+    DYNote* note = (DYNote*)[self.managedObjectContext objectRegisteredForID:objectID];
+	+    DYNote* note = (DYNote*)[self.managedObjectContext objectWithID:objectID];
 	+    
 	+    return note;
 	+    
@@ -1367,20 +1372,26 @@ DYLocationViewController.m (Complete file)
 	+        // If the note already has a location, show the location in the text field.
 	+
 	+        self.locationLabel.text = [self.note.location description];
-	+    } else {
-	+        
-	+        // Otherwise, create and set up the location manager.
-	+        
-	+        self.locationManager = [[CLLocationManager alloc] init];
-	+        self.locationManager.delegate = self;
-	+        [self.locationManager startUpdatingLocation];
-	+        
-	+        // Tell the user that we're looking for a location.
-	+        self.locationLabel.text = @"Looking for location...";
-	+        [self.locationActivity startAnimating];
-	+    }
+    +    } else {
+    +
+    +        // Otherwise, tell the user that we're looking for a location.
+    +        self.locationLabel.text = @"Looking for location...";
+    +        [self.locationActivity startAnimating];
+    +    }
 	+    
 	+}
+    +
+    + // Called when the view finishes appearing.
+    + - (void)viewDidAppear:(BOOL)animated {
+    + 
+    +     // Create the location manager, and tell it to start looking for the location.
+    +     // We do this in viewDidAppear because if no location hardware is available
+    +     // (e.g. we're on the simulator, or permission is denied) then the location manager
+    +     // will fail immediately (and we don't want that happening during the slide-in animation.)
+    +     self.locationManager = [[CLLocationManager alloc] init];
+    +     self.locationManager.delegate = self;
+    +     [self.locationManager startUpdatingLocation];
+    + }
 	+
 	+// Called when the location manager works out where we are.
 	+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
