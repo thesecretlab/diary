@@ -56,17 +56,20 @@
     
     if (currentNoteURL) {
         
-        // If one is set, we need to use the URL to get the object out of the database.
-        DYNote* note = [[DYNoteStorage sharedStorage] noteWithURL:currentNoteURL];
-        
-        // If the note exists, then create the note view controller, and give it the note object
-        if (note != nil) {
-            DYNoteViewController* noteViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NoteViewController"];
-            noteViewController.note = note;
+        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
             
-            // Next, push the view controller without an animation. This will make the app start with
-            // the note view controller visible.
-            [self.navigationController pushViewController:noteViewController animated:NO];
+            // If one is set, we need to use the URL to get the object out of the database.
+            DYNote* note = [[DYNoteStorage sharedStorage] noteWithURL:currentNoteURL];
+            
+            // If the note exists, then create the note view controller, and give it the note object
+            if (note != nil) {
+                DYNoteViewController* noteViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NoteViewController"];
+                noteViewController.note = note;
+                
+                // Next, push the view controller without an animation. This will make the app start with
+                // the note view controller visible.
+                [self.navigationController pushViewController:noteViewController animated:NO];
+            }
         }
         
     }

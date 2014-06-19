@@ -1215,24 +1215,27 @@ DYNoteListViewController.m
 	-(void)viewDidLoad{
 	...
 	+    // Get the URL for the note that we were last editing from user defaults, if one is set.
-	+    NSURL* currentNoteURL = [[NSUserDefaults standardUserDefaults] URLForKey:@"current_note"];
-	+    
-	+    if (currentNoteURL) {
-	+        
-	+        // If one is set, we need to use the URL to get the object out of the database.
-	+        DYNote* note = [[DYNoteStorage sharedStorage] noteWithURL:currentNoteURL];
-	+        
-	+        // If the note exists, then create the note view controller, and give it the note object
-	+        if (note != nil) {
-	+            DYNoteViewController* noteViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NoteViewController"];
-	+            noteViewController.note = note;
-	+            
-	+            // Next, push the view controller without an animation. This will make the app start with
-	+            // the note view controller visible.
-	+            [self.navigationController pushViewController:noteViewController animated:NO];
-	+        }
-	+        
-	+    }
+    +    NSURL* currentNoteURL = [[NSUserDefaults standardUserDefaults] URLForKey:@"current_note"];
+    +
+    +    if (currentNoteURL) {
+    +
+    +        if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+    +    
+    +            // If one is set, we need to use the URL to get the object out of the database.
+    +            DYNote* note = [[DYNoteStorage sharedStorage] noteWithURL:currentNoteURL];
+    +    
+    +            // If the note exists, then create the note view controller, and give it the note object
+    +            if (note != nil) {
+    +                DYNoteViewController* noteViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"NoteViewController"];
+    +                noteViewController.note = note;
+    +        
+    +                // Next, push the view controller without an animation. This will make the app start with
+    +                // the note view controller visible.
+    +                [self.navigationController pushViewController:noteViewController animated:NO];
+    +            }
+    +        }
+    +
+    +    }
 	+    
 	}
 4. Update DYNoteViewController.m's `viewDidLoad` and `viewWillDisappear` method.
