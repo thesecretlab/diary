@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *noteTextView;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
 @property (weak, nonatomic) IBOutlet UILabel *noNoteLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *toolbarBottomConstraint;
 
 @end
 
@@ -36,7 +37,7 @@
     // When the view first appears, the keyboard is not up, so the toolbar will be the
     // biggest thing covering the text view.
     // So, make the text view adjust to the toolbar's height.
-    [self updateTextInsetWithBottomHeight:self.toolbar.frame.size.height];
+    [self updateTextInsetWithBottomHeight:0];
     
     // When the view loads, we may not have a note to show. Update the interface in case we don't.
     [self updateInterface];
@@ -152,7 +153,7 @@
 - (void) keyboardWillHide:(NSNotification*)notification {
     
     // The keyboard's about to be gone; make the text view adjust.
-    [self updateTextInsetWithBottomHeight:self.toolbar.frame.size.height];
+    [self updateTextInsetWithBottomHeight:0];
     
 }
 
@@ -160,14 +161,15 @@
 // scrolling region of the text view.
 - (void) updateTextInsetWithBottomHeight:(float)height {
     
-    // Get the current frame of the text view.
-    CGRect textViewRect = self.view.frame;
+    // Force any layout updates right now
+    [self.view layoutIfNeeded];
     
-    // The text view should fill the available vertical height. So, take the height of the view, subtract 'height', and use that as the frame's height.
-    textViewRect.size.height = self.view.frame.size.height - height;
+    // Animate the constraint to update
+    [UIView animateWithDuration:0.25 animations:^{
+        self.toolbarBottomConstraint.constant = height;
+        [self.view layoutIfNeeded];
+    }];
     
-    // Finally, make the text view use the new frame.
-    self.noteTextView.frame = textViewRect;
 }
 
 // Called when the view controller is given a new DYNote.

@@ -25,7 +25,7 @@ We're going to make DYViewController become the DYNoteViewController.
 
 1. Rename DYViewController to DYNoteViewController.
 	-File Name, Interface/Implementation name and #import name in file. 
-2. Add a text view. Make it fill the screen.
+2. Add a text view. Make it fill the screen. Add constraints so that its top, bottom, left and right are pinned to the edges of the view.
 
 ## 01-ViewControllers
 
@@ -1266,6 +1266,9 @@ Next, we'll set up the UI.
 
 1. Open the storyboard.
 2. Add a toolbar to the Note View Controller.
+3. Resize the text view so that it doesn't overlap the toolbar.
+4. Pin the left, right and bottom of the toolbar to the container.
+4. Set the vertical spacing from text view to the toolbar to be zero.
 3. Select the bar button item that comes with the toolbar. Rename it to 'Location'.
 4. Add a new view controller.
 5. Set its title to 'Location'.
@@ -2388,7 +2391,7 @@ DYNoteViewController.m
 Now, we'll make it so that the text field adjusts its size to account for the keyboard. Additionally, because the text field is under the toolbar, we also want to take into account the toolbar's size.
 
 1. Open the storyboard.
-2. Connect the toolbar to a new outlet called 'toolbar'.
+2. Select the bottom space constraint between the toolbar and the bottom layout guide, and connect it to a new outlet named `toolbarBottomConstraint`.
 3. Implement the `updateTextInsetWithBottomHeight:`, `keyboardWillShow:` and `keyboardWillHide:` methods.
 
 DYNoteViewController.m
@@ -2409,7 +2412,7 @@ DYNoteViewController.m
 	+- (void) keyboardWillHide:(NSNotification*)notification {
 	+    
 	+    // The keyboard's about to be gone; make the text view adjust.
-	+    [self updateTextInsetWithBottomHeight:self.toolbar.frame.size.height];
+	+    [self updateTextInsetWithBottomHeight:0];
 	+    
 	+}
 	+
@@ -2417,20 +2420,14 @@ DYNoteViewController.m
 	+// scrolling region of the text view.
 	+- (void) updateTextInsetWithBottomHeight:(float)height {
 	+    
-	+    // The text view never actually changes size. Instead, the scrollable inset changes,
-	+    // which makes the area that gets scrolled around in smaller or bigger to account for
-	+    // the change in visible area.
-	+    
-	+    // Get the current insets - we only want to override the bottom value, so we aren't
-	+    // replacing the entire thing.
-	+    UIEdgeInsets insets = self.noteTextView.contentInset;
-	+    
-	+    // Make the insets use the provided height.
-	+    insets.bottom = height;
-	+    
-	+    // Adjust both the content inset of the text view, as well as the inset of the scroll bars.
-	+    self.noteTextView.contentInset = insets;
-	+    self.noteTextView.scrollIndicatorInsets = insets;
+    +    // Force any layout updates right now
+    +    [self.view layoutIfNeeded];
+    +
+    +    // Animate the constraint to update
+    +    [UIView animateWithDuration:0.25 animations:^{
+    +        self.toolbarBottomConstraint.constant = height;
+    +        [self.view layoutIfNeeded];
+    +    }];
 	+    
 	+}
 	
@@ -2452,7 +2449,7 @@ DYNoteViewController.m
 	+    // When the view first appears, the keyboard is not up, so the toolbar will be the
 	+    // biggest thing covering the text view.
 	+    // So, make the text view adjust to the toolbar's height.
-	+    [self updateTextInsetWithBottomHeight:self.toolbar.frame.size.height];
+	+    [self updateTextInsetWithBottomHeight:0];
 	    
 	}
 	
@@ -2986,7 +2983,7 @@ DYNoteViewController.m
 	  // When the view first appears, the keyboard is not up, so the toolbar will be the
 	  // biggest thing covering the text view.
 	  // So, make the text view adjust to the toolbar's height.
-	  [self updateTextInsetWithBottomHeight:self.toolbar.frame.size.height];
+	  [self updateTextInsetWithBottomHeight:0];
 	+    // When the view loads, we may not have a note to show. Update the interface in case we don't.
 	+    [self updateInterface];
 	+    
