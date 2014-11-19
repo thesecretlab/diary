@@ -17,6 +17,12 @@ class MasterViewController: UITableViewController {
     var didFinishGatheringObserver : AnyObject?
     var didUpdateObserver : AnyObject?
     
+    lazy var documentFileNameDateFormatter : NSDateFormatter = {
+        var formatter = NSDateFormatter()
+        formatter.dateFormat = "yy-MM-dd HH:mm"
+        return formatter
+    }()
+    
     lazy var documentQuery : NSMetadataQuery = {
         var query = NSMetadataQuery()
         
@@ -110,7 +116,7 @@ class MasterViewController: UITableViewController {
     func insertNewObject(sender: AnyObject) {
         
         // Create a new document name
-        let documentName = "Document-\(Int(NSDate.timeIntervalSinceReferenceDate())).note"
+        let documentName = "\(documentFileNameDateFormatter.stringFromDate(NSDate())).note"
         
         if let containerURL = self.containerURL {
             let documentURL = containerURL.URLByAppendingPathComponent("Documents").URLByAppendingPathComponent(documentName)
@@ -120,6 +126,8 @@ class MasterViewController: UITableViewController {
             newDocument.saveToURL(documentURL, forSaveOperation: UIDocumentSaveOperation.ForCreating) { (success) -> Void in
                 NSLog("Save succeded: \(success)")
             }
+            
+            
             
         }
         

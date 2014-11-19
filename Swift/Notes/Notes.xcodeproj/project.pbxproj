@@ -20,6 +20,8 @@
 		68C1874E1A1C1F4200910065 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68C1874C1A1C1F4200910065 /* LaunchScreen.xib */; };
 		68C1875A1A1C1F4200910065 /* Notes_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C187591A1C1F4200910065 /* Notes_iOSTests.swift */; };
 		68D20C461A1C275D008DC204 /* NoteDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D20C451A1C275D008DC204 /* NoteDocument.swift */; };
+		68D20C481A1C4660008DC204 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D20C471A1C4660008DC204 /* ImageViewController.swift */; };
+		68D20C4A1A1C466E008DC204 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D20C491A1C466E008DC204 /* LocationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +64,8 @@
 		68C187591A1C1F4200910065 /* Notes_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notes_iOSTests.swift; sourceTree = "<group>"; };
 		68C187611A1C20EC00910065 /* Notes-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Notes-iOS.entitlements"; sourceTree = "<group>"; };
 		68D20C451A1C275D008DC204 /* NoteDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteDocument.swift; sourceTree = "<group>"; };
+		68D20C471A1C4660008DC204 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		68D20C491A1C466E008DC204 /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +166,8 @@
 				68C187411A1C1F4200910065 /* AppDelegate.swift */,
 				68C187431A1C1F4200910065 /* MasterViewController.swift */,
 				68C187451A1C1F4200910065 /* DocumentViewController.swift */,
+				68D20C471A1C4660008DC204 /* ImageViewController.swift */,
+				68D20C491A1C466E008DC204 /* LocationViewController.swift */,
 				68C187471A1C1F4200910065 /* Main.storyboard */,
 				68C1874A1A1C1F4200910065 /* Images.xcassets */,
 				68C1874C1A1C1F4200910065 /* LaunchScreen.xib */,
@@ -381,6 +387,8 @@
 			files = (
 				68C187461A1C1F4200910065 /* DocumentViewController.swift in Sources */,
 				68C187441A1C1F4200910065 /* MasterViewController.swift in Sources */,
+				68D20C481A1C4660008DC204 /* ImageViewController.swift in Sources */,
+				68D20C4A1A1C466E008DC204 /* LocationViewController.swift in Sources */,
 				68D20C461A1C275D008DC204 /* NoteDocument.swift in Sources */,
 				68C187421A1C1F4200910065 /* AppDelegate.swift in Sources */,
 			);

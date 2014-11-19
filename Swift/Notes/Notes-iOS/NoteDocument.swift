@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import CoreLocation
 
 class NoteDocument: UIDocument {
    
     var text : String = "Hello"
     var imageData : NSData?
+    var location : CLLocation?
     
     override func loadFromContents(contents: AnyObject, ofType typeName: String, error outError: NSErrorPointer) -> Bool {
         
@@ -19,6 +21,7 @@ class NoteDocument: UIDocument {
         
         self.text = dictionary["text"] as? String ?? ""
         self.imageData = dictionary["imageData"] as? NSData
+        self.location = dictionary["location"] as? CLLocation
         
         return true
         
@@ -32,6 +35,10 @@ class NoteDocument: UIDocument {
         
         if let imageData = self.imageData {
             dictionary["imageData"] = imageData
+        }
+        
+        if let location = self.location {
+            dictionary["location"] = location
         }
         
         let data = NSKeyedArchiver.archivedDataWithRootObject(dictionary)
