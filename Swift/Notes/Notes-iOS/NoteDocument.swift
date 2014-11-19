@@ -11,7 +11,7 @@ import CoreLocation
 
 class NoteDocument: UIDocument {
    
-    var text : String = "Hello"
+    var text : String = ""
     var imageData : NSData?
     var location : CLLocation?
     

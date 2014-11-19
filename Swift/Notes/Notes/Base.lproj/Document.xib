@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6250" systemVersion="14A379a" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
+        <plugIn identifier="com.apple.MapKitIBPlugin" version="6250"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="Document" customModule="Notes" customModuleProvider="target">
+            <connections>
+                <outlet property="imageView" destination="e3h-zS-obf" id="kVG-OG-Kdr"/>
+                <outlet property="mapView" destination="tkx-NR-cNd" id="jhH-Bh-AQN"/>
+                <outlet property="textField" destination="a1p-Qg-4eI" id="gcM-Ld-HaB"/>
+                <outlet property="window" destination="xOd-HO-29H" id="JIz-fz-R2o"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <window title="Image" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="OMC-xV-xnb" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="130" y="110" width="276" height="378"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1366" height="745"/>
+            <view key="contentView" id="zPK-qZ-bgz">
+                <rect key="frame" x="0.0" y="0.0" width="276" height="378"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="e3h-zS-obf">
+                        <rect key="frame" x="17" y="17" width="242" height="344"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" imageFrameStyle="grayBezel" id="www-Vr-89W"/>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="e3h-zS-obf" firstAttribute="leading" secondItem="zPK-qZ-bgz" secondAttribute="leading" constant="20" symbolic="YES" id="Y80-EO-UB4"/>
+                    <constraint firstAttribute="bottom" secondItem="e3h-zS-obf" secondAttribute="bottom" constant="20" symbolic="YES" id="ZYN-DB-kmH"/>
+                    <constraint firstItem="e3h-zS-obf" firstAttribute="top" secondItem="zPK-qZ-bgz" secondAttribute="top" constant="20" symbolic="YES" id="bE7-tn-OZu"/>
+                    <constraint firstAttribute="trailing" secondItem="e3h-zS-obf" secondAttribute="trailing" constant="20" symbolic="YES" id="lJW-Pa-3Mu"/>
+                </constraints>
+            </view>
+        </window>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" animationBehavior="default" id="xOd-HO-29H" userLabel="Window">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" unifiedTitleAndToolbar="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="133" y="235" width="507" height="413"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1366" height="745"/>
+            <value key="minSize" type="size" width="94" height="86"/>
+            <view key="contentView" id="gIp-Ho-8D9">
+                <rect key="frame" x="0.0" y="0.0" width="507" height="413"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FfJ-6M-4PW">
+                        <rect key="frame" x="20" y="20" width="467" height="373"/>
+                        <clipView key="contentView" id="NqU-Bc-wzC">
+                            <rect key="frame" x="1" y="1" width="223" height="133"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <textView importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="a1p-Qg-4eI">
+                                    <rect key="frame" x="0.0" y="0.0" width="223" height="371"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <size key="minSize" width="465" height="371"/>
+                                    <size key="maxSize" width="472" height="10000000"/>
+                                    <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <size key="minSize" width="465" height="371"/>
+                                    <size key="maxSize" width="472" height="10000000"/>
+                                </textView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </clipView>
+                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="YES" id="f7a-P5-2qo">
+                            <rect key="frame" x="-100" y="-100" width="87" height="18"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                        <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="tNO-0C-WiR">
+                            <rect key="frame" x="224" y="1" width="15" height="133"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                    </scrollView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="FfJ-6M-4PW" secondAttribute="bottom" constant="20" id="BSW-XJ-wB4"/>
+                    <constraint firstAttribute="trailing" secondItem="FfJ-6M-4PW" secondAttribute="trailing" constant="20" id="Llk-dE-pgh"/>
+                    <constraint firstItem="FfJ-6M-4PW" firstAttribute="top" secondItem="gIp-Ho-8D9" secondAttribute="top" constant="20" id="T1B-bP-bCq"/>
+                    <constraint firstItem="FfJ-6M-4PW" firstAttribute="leading" secondItem="gIp-Ho-8D9" secondAttribute="leading" constant="20" id="kYu-s5-n4I"/>
+                </constraints>
+            </view>
+            <toolbar key="toolbar" implicitIdentifier="92C93FFA-0713-44CC-9756-617A94160D7B" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="nWG-1P-RbF">
+                <allowedToolbarItems>
+                    <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="5as-Sm-xnI"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="TlU-Cb-NFl"/>
+                    <toolbarItem implicitItemIdentifier="01D79E0F-1BD5-4B8F-AB8C-D4184B6D1B7D" label="Location" paletteLabel="Location" tag="-1" image="NSAdvanced" id="Yy4-h4-Bq1">
+                        <connections>
+                            <action selector="orderFront:" target="rim-TX-2Gz" id="ZNI-u4-WPj"/>
+                        </connections>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="4383F939-928C-48DE-B75E-7971724A17B4" label="Image" paletteLabel="Image" tag="-1" image="NSColorPanel" id="OEI-Yd-P8y">
+                        <connections>
+                            <action selector="orderFront:" target="OMC-xV-xnb" id="pKl-z7-CXS"/>
+                        </connections>
+                    </toolbarItem>
+                </allowedToolbarItems>
+                <defaultToolbarItems>
+                    <toolbarItem reference="OEI-Yd-P8y"/>
+                    <toolbarItem reference="5as-Sm-xnI"/>
+                    <toolbarItem reference="Yy4-h4-Bq1"/>
+                </defaultToolbarItems>
+            </toolbar>
+            <connections>
+                <outlet property="delegate" destination="-2" id="0bl-1N-x8E"/>
+            </connections>
+        </window>
+        <window title="Location" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="rim-TX-2Gz" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="130" y="110" width="534" height="378"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1366" height="745"/>
+            <view key="contentView" id="kCm-U9-Pef">
+                <rect key="frame" x="0.0" y="0.0" width="534" height="378"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <mapView mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="tkx-NR-cNd">
+                        <rect key="frame" x="20" y="20" width="494" height="338"/>
+                    </mapView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="tkx-NR-cNd" firstAttribute="leading" secondItem="kCm-U9-Pef" secondAttribute="leading" constant="20" symbolic="YES" id="Pkh-g3-pR6"/>
+                    <constraint firstAttribute="bottom" secondItem="tkx-NR-cNd" secondAttribute="bottom" constant="20" symbolic="YES" id="Vcr-jF-btV"/>
+                    <constraint firstItem="tkx-NR-cNd" firstAttribute="top" secondItem="kCm-U9-Pef" secondAttribute="top" constant="20" symbolic="YES" id="a6u-f2-IhE"/>
+                    <constraint firstAttribute="trailing" secondItem="tkx-NR-cNd" secondAttribute="trailing" constant="20" symbolic="YES" id="kOh-uB-R6Q"/>
+                </constraints>
+            </view>
+            <point key="canvasLocation" x="595" y="-109"/>
+        </window>
+    </objects>
+    <resources>
+        <image name="NSAdvanced" width="32" height="32"/>
+        <image name="NSColorPanel" width="32" height="32"/>
+    </resources>
+</document>
