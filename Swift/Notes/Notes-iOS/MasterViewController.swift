@@ -100,6 +100,8 @@ class MasterViewController: UITableViewController {
             
             if downloadState == NSMetadataUbiquitousItemDownloadingStatusCurrent {
                 self.discoveredURLs.append(url)
+            } else {
+                NSFileManager.defaultManager().startDownloadingUbiquitousItemAtURL(url, error: nil)
             }
             
         }
