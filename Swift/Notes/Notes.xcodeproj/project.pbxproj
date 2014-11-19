@@ -14,11 +14,12 @@
 		68C187301A1C1E2300910065 /* NotesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C1872F1A1C1E2300910065 /* NotesTests.swift */; };
 		68C187421A1C1F4200910065 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C187411A1C1F4200910065 /* AppDelegate.swift */; };
 		68C187441A1C1F4200910065 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C187431A1C1F4200910065 /* MasterViewController.swift */; };
-		68C187461A1C1F4200910065 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C187451A1C1F4200910065 /* DetailViewController.swift */; };
+		68C187461A1C1F4200910065 /* DocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C187451A1C1F4200910065 /* DocumentViewController.swift */; };
 		68C187491A1C1F4200910065 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68C187471A1C1F4200910065 /* Main.storyboard */; };
 		68C1874B1A1C1F4200910065 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68C1874A1A1C1F4200910065 /* Images.xcassets */; };
 		68C1874E1A1C1F4200910065 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68C1874C1A1C1F4200910065 /* LaunchScreen.xib */; };
 		68C1875A1A1C1F4200910065 /* Notes_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C187591A1C1F4200910065 /* Notes_iOSTests.swift */; };
+		68D20C461A1C275D008DC204 /* NoteDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D20C451A1C275D008DC204 /* NoteDocument.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +53,7 @@
 		68C187401A1C1F4200910065 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		68C187411A1C1F4200910065 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68C187431A1C1F4200910065 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
-		68C187451A1C1F4200910065 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		68C187451A1C1F4200910065 /* DocumentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentViewController.swift; sourceTree = "<group>"; };
 		68C187481A1C1F4200910065 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		68C1874A1A1C1F4200910065 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		68C1874D1A1C1F4200910065 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -60,6 +61,7 @@
 		68C187581A1C1F4200910065 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		68C187591A1C1F4200910065 /* Notes_iOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notes_iOSTests.swift; sourceTree = "<group>"; };
 		68C187611A1C20EC00910065 /* Notes-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Notes-iOS.entitlements"; sourceTree = "<group>"; };
+		68D20C451A1C275D008DC204 /* NoteDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteDocument.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,11 +161,12 @@
 				68C187611A1C20EC00910065 /* Notes-iOS.entitlements */,
 				68C187411A1C1F4200910065 /* AppDelegate.swift */,
 				68C187431A1C1F4200910065 /* MasterViewController.swift */,
-				68C187451A1C1F4200910065 /* DetailViewController.swift */,
+				68C187451A1C1F4200910065 /* DocumentViewController.swift */,
 				68C187471A1C1F4200910065 /* Main.storyboard */,
 				68C1874A1A1C1F4200910065 /* Images.xcassets */,
 				68C1874C1A1C1F4200910065 /* LaunchScreen.xib */,
 				68C1873F1A1C1F4200910065 /* Supporting Files */,
+				68D20C451A1C275D008DC204 /* NoteDocument.swift */,
 			);
 			path = "Notes-iOS";
 			sourceTree = "<group>";
@@ -376,8 +379,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				68C187461A1C1F4200910065 /* DetailViewController.swift in Sources */,
+				68C187461A1C1F4200910065 /* DocumentViewController.swift in Sources */,
 				68C187441A1C1F4200910065 /* MasterViewController.swift in Sources */,
+				68D20C461A1C275D008DC204 /* NoteDocument.swift in Sources */,
 				68C187421A1C1F4200910065 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -663,6 +667,7 @@
 				68C187351A1C1E2300910065 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		68C187361A1C1E2300910065 /* Build configuration list for PBXNativeTarget "NotesTests" */ = {
 			isa = XCConfigurationList;
@@ -671,6 +676,7 @@
 				68C187381A1C1E2300910065 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		68C1875B1A1C1F4200910065 /* Build configuration list for PBXNativeTarget "Notes-iOS" */ = {
 			isa = XCConfigurationList;
@@ -679,6 +685,7 @@
 				68C1875D1A1C1F4200910065 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		68C1875E1A1C1F4200910065 /* Build configuration list for PBXNativeTarget "Notes-iOSTests" */ = {
 			isa = XCConfigurationList;
@@ -687,6 +694,7 @@
 				68C187601A1C1F4200910065 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

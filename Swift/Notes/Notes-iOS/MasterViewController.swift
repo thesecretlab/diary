@@ -10,10 +10,42 @@ import UIKit
 
 class MasterViewController: UITableViewController {
 
-    var objects = NSMutableArray()
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    var containerURL : NSURL? = nil
+    
+    var discoveredURLs : [NSURL] = []
+    
+    var didFinishGatheringObserver : AnyObject?
+    var didUpdateObserver : AnyObject?
+    
+    lazy var documentQuery : NSMetadataQuery = {
+        var query = NSMetadataQuery()
+        
+        query.searchScopes = [NSMetadataQueryUbiquitousDocumentsScope]
+        
+        let filePattern = "*.note"
+        query.predicate = NSPredicate(format: "%K LIKE %@", NSMetadataItemFSNameKey, filePattern)
+        
+        return query
+    }()
+    
+    func checkiCloudAvailability( completion: Bool -> Void) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), { () -> Void in
+            
+            self.containerURL = NSFileManager.defaultManager().URLForUbiquityContainerIdentifier(nil)
+            
+            if self.containerURL == nil {
+                dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                    NSLog("iCloud not available")
+                    completion(false)
+                }
+            } else {
+                dispatch_async(dispatch_get_main_queue()) { () -> Void in
+                    NSLog("iCloud container: \(self.containerURL)")
+                    completion(true)
+                }
+            }
+            
+        });
     }
 
     override func viewDidLoad() {
@@ -21,8 +53,53 @@ class MasterViewController: UITableViewController {
         // Do any additional setup after loading the view, typically from a nib.
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
         
+        self.checkiCloudAvailability() { (available) in
+            NSLog("\(available)")
+        }
+        
+        self.didFinishGatheringObserver = NSNotificationCenter.defaultCenter().addObserverForName(
+            NSMetadataQueryDidFinishGatheringNotification,
+            object: nil,
+            queue: NSOperationQueue.mainQueue()) { (notification) -> Void in
+            
+                self.updateFileURLs()
+                
+        }
+        
+        self.didUpdateObserver = NSNotificationCenter.defaultCenter().addObserverForName(
+            NSMetadataQueryDidUpdateNotification,
+            object: nil,
+            queue: NSOperationQueue.mainQueue()) { (notification) -> Void in
+                
+                self.updateFileURLs()
+                
+        }
+        
+        self.documentQuery.startQuery()
+        
         let addButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: "insertNewObject:")
         self.navigationItem.rightBarButtonItem = addButton
+    }
+    
+    func updateFileURLs() {
+        
+        self.discoveredURLs = []
+        
+        documentQuery.enumerateResultsUsingBlock { (obj, index, stop) -> Void in
+            
+            let metadataItem = obj as NSMetadataItem
+            
+            let url = metadataItem.valueForAttribute(NSMetadataItemURLKey) as NSURL
+            let downloadState = metadataItem.valueForAttribute(NSMetadataUbiquitousItemDownloadingStatusKey) as? String
+            
+            if downloadState == NSMetadataUbiquitousItemDownloadingStatusCurrent {
+                self.discoveredURLs.append(url)
+            }
+            
+        }
+        
+        self.tableView.reloadData()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,9 +108,21 @@ class MasterViewController: UITableViewController {
     }
 
     func insertNewObject(sender: AnyObject) {
-        objects.insertObject(NSDate(), atIndex: 0)
-        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
-        self.tableView.insertRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        
+        // Create a new document name
+        let documentName = "Document-\(Int(NSDate.timeIntervalSinceReferenceDate())).note"
+        
+        if let containerURL = self.containerURL {
+            let documentURL = containerURL.URLByAppendingPathComponent("Documents").URLByAppendingPathComponent(documentName)
+            
+            let newDocument = NoteDocument(fileURL:documentURL)
+            
+            newDocument.saveToURL(documentURL, forSaveOperation: UIDocumentSaveOperation.ForCreating) { (success) -> Void in
+                NSLog("Save succeded: \(success)")
+            }
+            
+        }
+        
     }
 
     // MARK: - Segues
@@ -41,8 +130,10 @@ class MasterViewController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showDetail" {
             if let indexPath = self.tableView.indexPathForSelectedRow() {
-                let object = objects[indexPath.row] as NSDate
-            (segue.destinationViewController as DetailViewController).detailItem = object
+                
+                let URL = discoveredURLs[indexPath.row] as NSURL
+                
+                (segue.destinationViewController as DocumentViewController).documentURL = URL
             }
         }
     }
@@ -54,14 +145,14 @@ class MasterViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return objects.count
+        return discoveredURLs.count
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as UITableViewCell
 
-        let object = objects[indexPath.row] as NSDate
-        cell.textLabel?.text = object.description
+        let object = discoveredURLs[indexPath.row] as NSURL
+        cell.textLabel.text = object.lastPathComponent
         return cell
     }
 
@@ -72,10 +163,7 @@ class MasterViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-            objects.removeObjectAtIndex(indexPath.row)
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
     }
 
