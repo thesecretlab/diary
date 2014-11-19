@@ -12,6 +12,8 @@ class DocumentViewController: UIViewController {
 
     private var keyboardWillChangeFrameObserver : AnyObject?
     
+    private var documentStateUpdatedObserver : AnyObject?
+    
     @IBOutlet weak var textView: UITextView!
     
     @IBOutlet weak var toolbarConstraint: NSLayoutConstraint!
@@ -61,11 +63,18 @@ class DocumentViewController: UIViewController {
             }
             
         }
+        
+        self.documentStateUpdatedObserver = NSNotificationCenter.defaultCenter().addObserverForName(UIDocumentStateChangedNotification, object: nil, queue: NSOperationQueue.mainQueue()) { (notification) -> Void in
+            
+            self.configureView()
+            
+        }
     }
     
     override func viewWillDisappear(animated: Bool) {
         
         NSNotificationCenter.defaultCenter().removeObserver(self.keyboardWillChangeFrameObserver!)
+        NSNotificationCenter.defaultCenter().removeObserver(self.documentStateUpdatedObserver!)
         
         document?.text = textView.text
         
@@ -84,6 +93,10 @@ class DocumentViewController: UIViewController {
             
             (segue.destinationViewController as ImageViewController).document = self.document
             
+        }
+        
+        if segue.identifier == "showLocation" {
+            (segue.destinationViewController as LocationViewController).document = self.document
         }
         
     }

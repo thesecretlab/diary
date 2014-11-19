@@ -37,7 +37,7 @@ class MasterViewController: UITableViewController {
     func checkiCloudAvailability( completion: Bool -> Void) {
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), { () -> Void in
             
-            self.containerURL = NSFileManager.defaultManager().URLForUbiquityContainerIdentifier(nil)
+            self.containerURL = NSFileManager.defaultManager().URLForUbiquityContainerIdentifier("iCloud.au.com.secretlab.Notes-iOS")
             
             if self.containerURL == nil {
                 dispatch_async(dispatch_get_main_queue()) { () -> Void in
@@ -98,11 +98,15 @@ class MasterViewController: UITableViewController {
             let url = metadataItem.valueForAttribute(NSMetadataItemURLKey) as NSURL
             let downloadState = metadataItem.valueForAttribute(NSMetadataUbiquitousItemDownloadingStatusKey) as? String
             
-            if downloadState == NSMetadataUbiquitousItemDownloadingStatusCurrent {
-                self.discoveredURLs.append(url)
-            } else {
+            if downloadState == NSMetadataUbiquitousItemDownloadingStatusNotDownloaded {
                 NSFileManager.defaultManager().startDownloadingUbiquitousItemAtURL(url, error: nil)
+            } else {
+                self.discoveredURLs.append(url)
             }
+            
+            
+            
+            
             
         }
         
