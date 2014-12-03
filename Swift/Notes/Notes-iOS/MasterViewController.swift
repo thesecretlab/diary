@@ -19,7 +19,7 @@ class MasterViewController: UITableViewController {
     
     lazy var documentFileNameDateFormatter : NSDateFormatter = {
         var formatter = NSDateFormatter()
-        formatter.dateFormat = "yy-MM-dd HH:mm"
+        formatter.dateFormat = "yy-MM-dd HH:mm:ss"
         return formatter
     }()
     
@@ -41,12 +41,12 @@ class MasterViewController: UITableViewController {
             
             if self.containerURL == nil {
                 dispatch_async(dispatch_get_main_queue()) { () -> Void in
-                    NSLog("iCloud not available")
+                    //NSLog("iCloud not available")
                     completion(false)
                 }
             } else {
                 dispatch_async(dispatch_get_main_queue()) { () -> Void in
-                    NSLog("iCloud container: \(self.containerURL)")
+                    //NSLog("iCloud container: \(self.containerURL)")
                     completion(true)
                 }
             }
@@ -60,7 +60,7 @@ class MasterViewController: UITableViewController {
         self.navigationItem.leftBarButtonItem = self.editButtonItem()
         
         self.checkiCloudAvailability() { (available) in
-            NSLog("\(available)")
+            NSLog("iCloud available: \(available)")
         }
         
         self.didFinishGatheringObserver = NSNotificationCenter.defaultCenter().addObserverForName(
@@ -104,19 +104,10 @@ class MasterViewController: UITableViewController {
                 self.discoveredURLs.append(url)
             }
             
-            
-            
-            
-            
         }
         
         self.tableView.reloadData()
         
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     func insertNewObject(sender: AnyObject) {
@@ -132,8 +123,6 @@ class MasterViewController: UITableViewController {
             newDocument.saveToURL(documentURL, forSaveOperation: UIDocumentSaveOperation.ForCreating) { (success) -> Void in
                 NSLog("Save succeded: \(success)")
             }
-            
-            
             
         }
         
@@ -177,7 +166,7 @@ class MasterViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
-        } else if editingStyle == .Insert {
+            // Delete the file
         }
     }
 

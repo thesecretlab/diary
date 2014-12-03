@@ -13,6 +13,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    func application(application: UIApplication, continueUserActivity userActivity: NSUserActivity, restorationHandler: ([AnyObject]!) -> Void) -> Bool {
+        
+        // Ask the root view controller (a navigation controller)
+        // to pop to the root; then, make a DocumentViewController, 
+        // give it the URL, and present it
+        
+        if let navigationController = self.window?.rootViewController as? UINavigationController {
+            
+            navigationController.popToRootViewControllerAnimated(false)
+            
+            let documentViewController = navigationController.storyboard?.instantiateViewControllerWithIdentifier("DocumentViewController") as DocumentViewController
+            
+            documentViewController.documentURL = userActivity.userInfo?[NSUserActivityDocumentURLKey] as? NSURL
+        
+            navigationController.pushViewController(documentViewController, animated: false)
+            
+            restorationHandler([documentViewController])
+            
+            return true
+        } else {
+            return false
+        }
+        
+        
+    }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.

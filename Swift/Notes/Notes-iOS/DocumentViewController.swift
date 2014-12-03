@@ -8,31 +8,65 @@
 
 import UIKit
 
-class DocumentViewController: UIViewController {
+class DocumentViewController: UIViewController, UITextViewDelegate {
 
-    private var keyboardWillChangeFrameObserver : AnyObject?
-    
-    private var documentStateUpdatedObserver : AnyObject?
-    
+    private var document: NoteDocument?
+
     @IBOutlet weak var textView: UITextView!
     
-    @IBOutlet weak var toolbarConstraint: NSLayoutConstraint!
     
     var documentURL : NSURL? {
         didSet {
             
-            document = NoteDocument(fileURL: documentURL!)
+            self.document = NoteDocument(fileURL: documentURL!)
             
-            document?.openWithCompletionHandler() { (success) -> Void in
+            self.document?.openWithCompletionHandler() { (success) -> Void in
                 
                 self.configureView()
+                
+                self.userActivity = self.document?.userActivity
+                
+                self.documentStateUpdatedObserver = NSNotificationCenter.defaultCenter().addObserverForName(UIDocumentStateChangedNotification, object: self.document!, queue: NSOperationQueue.mainQueue()) { (notification) -> Void in
+                    
+                    if let document = self.document {
+                        if document.documentState & UIDocumentState.EditingDisabled != nil {
+                            self.textView.resignFirstResponder()
+                        }
+                        
+                        if document.documentState & UIDocumentState.InConflict != nil {
+                            self.handleConflict()
+                        }
+                    }
+                    
+                    self.configureView()
+                    
+                }
+                
             }
             
         }
     }
 
-    private var document: NoteDocument?
-
+    func handleConflict() {
+        
+        if let document = self.document {
+            
+            // Get the collection of file versions
+            NSFileVersion.removeOtherVersionsOfItemAtURL(document.fileURL, error: nil)
+            
+            for version in NSFileVersion.unresolvedConflictVersionsOfItemAtURL(document.fileURL) as [NSFileVersion] {
+                version.resolved = true
+            }
+            
+        }
+        
+    }
+    
+    func textViewDidChange(textView: UITextView) {
+        self.document?.text = self.textView.text
+        self.document?.updateChangeCount(UIDocumentChangeKind.Done)
+    }
+    
     func configureView() {
         // Update the user interface for the detail item.
         if let document = self.document {
@@ -45,6 +79,10 @@ class DocumentViewController: UIViewController {
         }
     }
     
+    private var keyboardWillChangeFrameObserver : AnyObject?
+    
+    
+    @IBOutlet weak var toolbarConstraint: NSLayoutConstraint!
     
     override func viewWillAppear(animated: Bool) {
         self.keyboardWillChangeFrameObserver = NSNotificationCenter.defaultCenter().addObserverForName(UIKeyboardWillChangeFrameNotification, object: nil, queue: NSOperationQueue.mainQueue()) { (notification) -> Void in
@@ -64,11 +102,7 @@ class DocumentViewController: UIViewController {
             
         }
         
-        self.documentStateUpdatedObserver = NSNotificationCenter.defaultCenter().addObserverForName(UIDocumentStateChangedNotification, object: nil, queue: NSOperationQueue.mainQueue()) { (notification) -> Void in
-            
-            self.configureView()
-            
-        }
+        
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -87,6 +121,9 @@ class DocumentViewController: UIViewController {
         
     }
     
+    private var documentStateUpdatedObserver : AnyObject?
+    
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "showImage" {
@@ -100,18 +137,6 @@ class DocumentViewController: UIViewController {
         }
         
     }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        self.configureView()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 
 }
 
